@@ -83,9 +83,12 @@ export interface CaseStudyData {
     clayMismatches: { appName: string; field: string; agentValue: string; clayValue: string }[];
   };
   proof: {
+    liveUrl: string | null;
+    repoUrl: string | null;
     localPreview: string;
     commands: { label: string; command: string }[];
   };
+  deploy: { url: string; repo: string; pagesSource: string } | null;
   apps: CaseStudyAppRow[];
 }
 
@@ -180,6 +183,23 @@ export function buildCaseStudyData(root: string): CaseStudyData {
   const pass2Errors = JSON.parse(readFileSync(`${root}/data/runs/pass2/errors.json`, "utf8")) as {
     mismatches: { appName: string; field: string; agentValue: string; clayValue: string }[];
   };
+  let deploy: CaseStudyData["deploy"] = null;
+  try {
+    const raw = JSON.parse(readFileSync(`${root}/site/deploy.json`, "utf8")) as {
+      url?: string;
+      repo?: string;
+      pagesSource?: string;
+    };
+    if (typeof raw.url === "string" && raw.url.trim() !== "") {
+      deploy = {
+        url: raw.url.trim(),
+        repo: typeof raw.repo === "string" ? raw.repo.trim() : "",
+        pagesSource: typeof raw.pagesSource === "string" ? raw.pagesSource : "",
+      };
+    }
+  } catch {
+    deploy = null;
+  }
   const clayMatches = (pass2Metrics.fieldResults as FieldResult[])
     .filter((row) => row.kind === "match")
     .slice(0, 10)
@@ -281,7 +301,10 @@ export function buildCaseStudyData(root: string): CaseStudyData {
       clayMatches,
       clayMismatches,
     },
+    deploy,
     proof: {
+      liveUrl: deploy?.url ?? null,
+      repoUrl: deploy?.repo ?? null,
       localPreview: "Open site/index.html in a browser, or run: npx --yes serve site",
       commands: [
         { label: "Re-run the 100-app pipeline (Pass 2)", command: "COST_OK=yes EXA_MAX_APPS=20 npm run pass2" },

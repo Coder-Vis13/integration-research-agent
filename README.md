@@ -2,7 +2,9 @@
 
 TypeScript pipeline that researches **100 SaaS apps** for Composio-style toolkit buildability: auth, self-serve vs gated access, API surface, MCP, blockers, and quote-backed evidence. Outputs frozen JSON runs, scores **agreement with a fixed Clay sample (28 apps)**, and a static case study.
 
-**Case study (local):** open [`site/index.html`](site/index.html) after `npm run report` — patterns, verification, workflow, and a searchable 100-app table. **Not deployed** to a live URL in this repo.
+**Case study (live):** [https://coder-vis13.github.io/integration-research-agent/](https://coder-vis13.github.io/integration-research-agent/)  
+**Source repo:** [https://github.com/coder-vis13/integration-research-agent](https://github.com/coder-vis13/integration-research-agent)  
+Regenerate locally: `npm run report` → `site/` (copy to `docs/` for GitHub Pages).
 
 Public project notes live in [`NOTES.md`](NOTES.md).
 
@@ -150,6 +152,7 @@ Pass 2 five-field answered agreement in the shipped metrics: **38/49** vs Pass 1
 - **Operational:** DealCloud hit an LLM HTTP 503; six apps had no usable page; Paygent Connect fetch failed (`run-meta.json`).
 - **Evaluation:** Clay labels are a quick human-checked reference for agreement scoring; they are not a full independent audit of every vendor doc.
 - **`npm run research`** is intentionally a stub — use **`npm run pass2`** for the real agent.
+- **GitHub Pages** serves from `docs/` on `main`; after `npm run report`, sync: `cp site/* docs/`.
 
 ---
 
@@ -165,6 +168,6 @@ Schema: [`src/schema/appRecord.ts`](src/schema/appRecord.ts). Wave rules: [`src/
 
 ## Submission pointers
 
-- **Repo:** this README + source.
-- **Case study:** local `site/index.html` (deploy URL not included here).
-- **Honesty:** unknowns, mismatches, and operational failures are shown on the case study and in `errors.json`.
+- **Case study:** https://coder-vis13.github.io/integration-research-agent/
+- **Repo:** https://github.com/coder-vis13/integration-research-agent
+- **Honesty:** unknowns, mismatches, and operational failures are on the case study and in `errors.json`.

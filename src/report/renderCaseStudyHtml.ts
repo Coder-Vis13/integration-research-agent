@@ -223,9 +223,14 @@ export function renderCaseStudyHtml(data: CaseStudyData, jsonPayload: string): s
     </section>
 
     <section id="proof">
-      <h2>Proof <span>runnable from the repo</span></h2>
-      <p style="margin-top:0;color:var(--muted);font-size:0.95rem;">No live deploy URL yet. Regenerate or rerun from the repo; download <a href="data.json">data.json</a> for agents.</p>
-      <p style="margin:0.5rem 0 0.25rem;font-size:0.9rem;color:var(--muted);">${escapeHtml(data.proof.localPreview)}</p>
+      <h2>Proof <span>live case study and reruns</span></h2>
+      ${data.proof.liveUrl
+    ? `<p style="margin-top:0;font-size:1rem;"><strong>Live case study:</strong> <a href="${escapeHtml(data.proof.liveUrl)}">${escapeHtml(data.proof.liveUrl)}</a></p>`
+    : `<p style="margin-top:0;color:var(--muted);font-size:0.95rem;">No live deploy URL in site/deploy.json.</p>`}
+      ${data.proof.repoUrl
+    ? `<p style="margin:0.35rem 0 0;font-size:0.95rem;"><strong>Source repo:</strong> <a href="${escapeHtml(data.proof.repoUrl)}">${escapeHtml(data.proof.repoUrl)}</a></p>`
+    : ""}
+      <p style="margin:0.5rem 0;color:var(--muted);font-size:0.9rem;">Machine-readable export: <a href="data.json">data.json</a>. Local preview: ${escapeHtml(data.proof.localPreview)}</p>
       ${data.proof.commands.map((item) => `<p style="margin:0.75rem 0 0.15rem;font-size:0.85rem;font-weight:600;">${escapeHtml(item.label)}</p><code class="cmd">${escapeHtml(item.command)}</code>`).join("\n")}
     </section>
 

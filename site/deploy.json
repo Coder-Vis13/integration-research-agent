@@ -1,5 +1,5 @@
 {
-  "status": "pending",
-  "instructions": "Enable GitHub Pages with source branch main and folder /site, or run: npx surge site composio-100-app-research.surge.sh",
-  "localPreview": "npm run report && open site/index.html"
+  "url": "https://coder-vis13.github.io/integration-research-agent/",
+  "repo": "https://github.com/coder-vis13/integration-research-agent",
+  "pagesSource": "main /docs"
 }

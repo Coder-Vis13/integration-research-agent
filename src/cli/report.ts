@@ -24,6 +24,7 @@ const publicData = {
   headlineSummary: data.headlineSummary,
   verificationRows: data.verificationRows,
   proof: data.proof,
+  deploy: data.deploy,
   apps: data.apps,
 };
 

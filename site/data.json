@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T18:52:30.670Z",
+  "generatedAt": "2026-11-25T19:18:51.751Z",
   "metricLabel": "agreement_with_clay",
   "evaluationNote": "Scores are agreement with Clay-exported reference values on the fixed 28-app sample, not established factual accuracy.",
   "headline": {
@@ -1117,6 +1117,8 @@
     ]
   },
   "proof": {
+    "liveUrl": "https://coder-vis13.github.io/integration-research-agent/",
+    "repoUrl": "https://github.com/coder-vis13/integration-research-agent",
     "localPreview": "Open site/index.html in a browser, or run: npx --yes serve site",
     "commands": [
       {
@@ -1136,6 +1138,11 @@
         "command": "npm run check"
       }
     ]
+  },
+  "deploy": {
+    "url": "https://coder-vis13.github.io/integration-research-agent/",
+    "repo": "https://github.com/coder-vis13/integration-research-agent",
+    "pagesSource": "main /docs"
   },
   "apps": [
     {
