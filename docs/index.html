@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>100-app research agent — case study</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #fff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --hit: #ecfdf5;
+      --miss: #fef2f2;
+      --human: #fffbeb;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; font-size: 16px; }
+    a { color: var(--accent); }
+    code, .cmd { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: #f1f5f9; padding: 0.15em 0.4em; border-radius: 4px; }
+    .cmd { display: block; padding: 0.65rem 0.85rem; margin: 0.35rem 0; border: 1px solid var(--line); background: #fff; }
+    header { background: var(--surface); border-bottom: 1px solid var(--line); padding: 1.25rem 1.5rem 1rem; }
+    header h1 { margin: 0; font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em; }
+    .tagline { margin: 0.5rem 0 0; color: var(--muted); max-width: 46rem; }
+    nav.jump { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 1rem; font-size: 0.9rem; }
+    nav.jump a { text-decoration: none; font-weight: 600; }
+    main { max-width: 1080px; margin: 0 auto; padding: 1.25rem 1.5rem 3rem; }
+    section { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.35rem; margin-bottom: 1.25rem; }
+    section h2 { margin: 0 0 0.75rem; font-size: 1.15rem; font-weight: 700; }
+    section h2 span { font-weight: 500; color: var(--muted); font-size: 0.95rem; }
+    .headline-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 0.75rem 0 1rem; }
+    .stat { background: var(--accent-soft); border-radius: 10px; padding: 0.75rem; text-align: center; }
+    .stat .n { display: block; font-size: 1.75rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .stat .l { font-size: 0.8rem; color: var(--muted); }
+    .bullets { margin: 0; padding-left: 1.2rem; color: var(--muted); }
+    .bullets li { margin: 0.35rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); padding: 0.5rem 0.55rem; text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+    .pct { color: var(--muted); font-size: 0.85em; }
+    td.num, .num { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .callout { background: var(--human); border: 1px solid #fde68a; border-radius: 8px; padding: 0.85rem 1rem; margin: 0.75rem 0; font-size: 0.95rem; }
+    .callout strong { display: block; margin-bottom: 0.35rem; }
+    .warn { background: #f8fafc; border-left: 4px solid var(--accent); padding: 0.65rem 0.9rem; font-size: 0.92rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; font-size: 0.88rem; color: var(--muted); margin: 0.5rem 0 1rem; }
+    .flow span { background: #f1f5f9; padding: 0.35rem 0.55rem; border-radius: 6px; }
+    .flow .arrow { background: none; padding: 0; }
+    tr.hit { background: var(--hit); }
+    tr.miss { background: var(--miss); }
+    details.findings { border: none; padding: 0; background: transparent; }
+    details.findings summary { cursor: pointer; font-weight: 600; margin-bottom: 0.75rem; }
+    .table-scroll { overflow: auto; max-height: 65vh; }
+    #filters { margin-bottom: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    #filters input, #filters select { padding: 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; }
+    footer { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 1rem; }
+    @media print { section { break-inside: avoid; } nav.jump { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Composio 100-app research agent</h1>
+    <p class="tagline">TypeScript pipeline: fetch docs → extract with a small LLM → verify quotes → score against a fixed 28-app Clay sample. This page is generated from frozen JSON; nothing here is hand-typed.</p>
+    <nav class="jump" aria-label="Sections">
+      <a href="#patterns">Patterns</a>
+      <a href="#verification">Verification</a>
+      <a href="#agent">Agent &amp; humans</a>
+      <a href="#proof">Proof / rerun</a>
+      <a href="#findings">100-app table</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="patterns">
+      <h2>Headline patterns <span>Pass 2 · n=100</span></h2>
+      <div class="headline-strip">
+        <div class="stat"><span class="n">9</span><span class="l">build_now</span></div>
+        <div class="stat"><span class="n">78</span><span class="l">quoted evidence</span></div>
+        <div class="stat"><span class="n">83</span><span class="l">unknown access</span></div>
+        <div class="stat"><span class="n">54</span><span class="l">unknown auth</span></div>
+        <div class="stat"><span class="n">20</span><span class="l">used Exa backup</span></div>
+      </div>
+      <ul class="bullets">
+        <li>On all 100 apps (Pass 2), 9 look buildable now with quoted evidence, but 83 still have unknown access and 54 have unknown auth.</li>
+<li>78 rows carry at least one quoted URL; 20 needed Composio Exa backup search after HTTP.</li>
+<li>92 apps land in an unknown wave because docs are missing or silent on gates (25 no usable docs, 67 docs present but no gating quote).</li>
+      </ul>
+      <table>
+        <thead><tr><th>Wave bucket (computed)</th><th>Apps</th></tr></thead>
+        <tbody><tr><td>Docs found, don't state it</td><td class="num">67</td></tr>
+<tr><td>No usable docs found</td><td class="num">25</td></tr>
+<tr><td>Wave 1</td><td class="num">6</td></tr>
+<tr><td>Not buildable (CLI or skill only)</td><td class="num">2</td></tr></tbody>
+      </table>
+    </section>
+
+    <section id="verification">
+      <h2>Verification <span>28-app sample · agreement with Clay (not factual accuracy)</span></h2>
+      <div class="warn">Scores are agreement with Clay-exported reference values on the fixed 28-app sample, not established factual accuracy. A quick human check was done on the Clay sample before scoring.</div>
+      <p class="bullets" style="list-style:none;padding:0;margin:0 0 0.75rem;">
+        <strong>Among answered fields only:</strong> Pass 1 <code>34/48</code> (71%) →
+        Pass 2 <code>38/49</code> (78%).
+        Pass 2 answers more access/mcp fields but abstains more on buildability (4/28 coverage).
+      </p>
+      <table aria-label="Pass 2 Clay agreement matrix">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Pass 1 agree</th>
+            <th>Pass 2 agree</th>
+            <th>Pass 2 coverage</th>
+            <th>Pass 2 abstain</th>
+            <th>Pass 2 miss</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      <th scope="row">auth</th>
+      <td>4/8 <span class="pct">50%</span></td>
+      <td>6/11 <span class="pct">55%</span></td>
+      <td>11/25</td>
+      <td>14</td>
+      <td>5</td>
+    </tr>
+<tr>
+      <th scope="row">access</th>
+      <td>0/1 <span class="pct">0%</span></td>
+      <td>4/5 <span class="pct">80%</span></td>
+      <td>5/24</td>
+      <td>19</td>
+      <td>1</td>
+    </tr>
+<tr>
+      <th scope="row">apiSurface</th>
+      <td>11/15 <span class="pct">73%</span></td>
+      <td>10/12 <span class="pct">83%</span></td>
+      <td>12/28</td>
+      <td>16</td>
+      <td>2</td>
+    </tr>
+<tr>
+      <th scope="row">mcp</th>
+      <td>11/14 <span class="pct">79%</span></td>
+      <td>14/17 <span class="pct">82%</span></td>
+      <td>17/28</td>
+      <td>11</td>
+      <td>3</td>
+    </tr>
+<tr>
+      <th scope="row">buildability</th>
+      <td>8/10 <span class="pct">80%</span></td>
+      <td>4/4 <span class="pct">100%</span></td>
+      <td>4/28</td>
+      <td>24</td>
+      <td>0</td>
+    </tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top:1.25rem;font-size:1rem;">Hits <span style="font-weight:500;color:var(--muted)">Pass 2 matches Clay (sample)</span></h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>App</th><th>Field</th><th>Agent</th><th>Clay</th></tr></thead>
+        <tbody><tr class="hit">
+    <td>Salesforce</td><td>auth</td>
+    <td><code>oauth2</code></td><td><code>oauth2</code></td>
+  </tr>
+<tr class="hit">
+    <td>Salesforce</td><td>apiSurface</td>
+    <td><code>rest</code></td><td><code>rest</code></td>
+  </tr>
+<tr class="hit">
+    <td>Salesforce</td><td>mcp</td>
+    <td><code>none_found</code></td><td><code>none_found</code></td>
+  </tr>
+<tr class="hit">
+    <td>Zendesk</td><td>apiSurface</td>
+    <td><code>rest</code></td><td><code>rest</code></td>
+  </tr>
+<tr class="hit">
+    <td>Zendesk</td><td>mcp</td>
+    <td><code>none_found</code></td><td><code>none_found</code></td>
+  </tr>
+<tr class="hit">
+    <td>Zendesk</td><td>buildability</td>
+    <td><code>build_now</code></td><td><code>build_now</code></td>
+  </tr>
+<tr class="hit">
+    <td>Slack</td><td>auth</td>
+    <td><code>oauth2</code></td><td><code>oauth2</code></td>
+  </tr>
+<tr class="hit">
+    <td>Slack</td><td>access</td>
+    <td><code>self_serve_free</code></td><td><code>self_serve_free</code></td>
+  </tr>
+<tr class="hit">
+    <td>Slack</td><td>apiSurface</td>
+    <td><code>rest</code></td><td><code>rest</code></td>
+  </tr>
+<tr class="hit">
+    <td>Slack</td><td>buildability</td>
+    <td><code>build_now</code></td><td><code>build_now</code></td>
+  </tr></tbody>
+      </table></div>
+
+      <h2 style="margin-top:1.25rem;font-size:1rem;">Misses <span style="font-weight:500;color:var(--muted)">disagreement ≠ proven error</span></h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>App</th><th>Field</th><th>Agent</th><th>Clay</th></tr></thead>
+        <tbody><tr class="miss">
+    <td>Zendesk</td><td>auth</td>
+    <td><code>basic|oauth2</code></td><td><code>oauth2</code></td>
+  </tr>
+<tr class="miss">
+    <td>Zendesk</td><td>access</td>
+    <td><code>self_serve_trial</code></td><td><code>self_serve_free</code></td>
+  </tr>
+<tr class="miss">
+    <td>Slack</td><td>mcp</td>
+    <td><code>official</code></td><td><code>none_found</code></td>
+  </tr>
+<tr class="miss">
+    <td>Vonage</td><td>auth</td>
+    <td><code>api_key|basic</code></td><td><code>api_key</code></td>
+  </tr>
+<tr class="miss">
+    <td>Shopify</td><td>mcp</td>
+    <td><code>none_found</code></td><td><code>official</code></td>
+  </tr>
+<tr class="miss">
+    <td>GitHub</td><td>apiSurface</td>
+    <td><code>rest</code></td><td><code>both</code></td>
+  </tr>
+<tr class="miss">
+    <td>Sentry</td><td>auth</td>
+    <td><code>oauth2</code></td><td><code>token</code></td>
+  </tr>
+<tr class="miss">
+    <td>NotebookLM</td><td>auth</td>
+    <td><code>api_key</code></td><td><code>oauth2</code></td>
+  </tr>
+<tr class="miss">
+    <td>iPayX</td><td>mcp</td>
+    <td><code>none_found</code></td><td><code>official</code></td>
+  </tr>
+<tr class="miss">
+    <td>higgsfield</td><td>auth</td>
+    <td><code>api_key</code></td><td><code>other</code></td>
+  </tr>
+<tr class="miss">
+    <td>higgsfield</td><td>apiSurface</td>
+    <td><code>rest</code></td><td><code>mcp_only</code></td>
+  </tr></tbody>
+      </table></div>
+      <p style="font-size:0.88rem;color:var(--muted);margin:0.5rem 0 0;">Operational gap: <strong>DealCloud</strong> — HTTP 503 from the extraction provider.</p>
+    </section>
+
+    <section id="agent">
+      <h2>The agent <span>what we built</span></h2>
+      <div class="flow">
+        <span>apps.json</span><span class="arrow">→</span>
+        <span>HTTP doc finder</span><span class="arrow">→</span>
+        <span>optional Exa search</span><span class="arrow">→</span>
+        <span>LLM extract (smoke-v4)</span><span class="arrow">→</span>
+        <span>quote verifier</span><span class="arrow">→</span>
+        <span>records.json</span>
+      </div>
+      <ol class="bullets">
+        <li>HTTP doc discovery (hint URL plus same-site developer links, capped at eight pages)</li>
+<li>Composio Exa Instant backup (EXA_SEARCH, EXA_GET_CONTENTS_ACTION) when login wording is missing</li>
+<li>OpenRouter extraction with google/gemini-2.5-flash-lite</li>
+<li>Quote-based generic verifier and Composio catalog match</li>
+      </ol>
+      <div class="callout">
+        <strong>Where a human was needed</strong>
+        <ul style="margin:0.35rem 0 0;padding-left:1.2rem;">
+          <li>A quick human check was done on the Clay sample labels before scoring.</li>
+<li>The 28-app evaluation sample was fixed before any extraction.</li>
+<li>Paid runs over five apps required an explicit cost estimate and COST_OK=yes.</li>
+        </ul>
+      </motion.div>
+      <ul class="bullets">
+        <li>Access and buildability stay unknown on most of the 100-app Pass 2 run (83 and 87 rows respectively).</li>
+<li>Six apps had no usable page; DealCloud failed one model call.</li>
+<li>Agreement with Clay does not prove either Clay or the agent is factually correct.</li>
+      </ul>
+    </section>
+
+    <section id="proof">
+      <h2>Proof <span>runnable from the repo</span></h2>
+      <p style="margin-top:0;color:var(--muted);font-size:0.95rem;">No live deploy URL yet. Regenerate or rerun from the repo; download <a href="data.json">data.json</a> for agents.</p>
+      <p style="margin:0.5rem 0 0.25rem;font-size:0.9rem;color:var(--muted);">Open site/index.html in a browser, or run: npx --yes serve site</p>
+      <p style="margin:0.75rem 0 0.15rem;font-size:0.85rem;font-weight:600;">Re-run the 100-app pipeline (Pass 2)</p><code class="cmd">COST_OK=yes EXA_MAX_APPS=20 npm run pass2</code>
+<p style="margin:0.75rem 0 0.15rem;font-size:0.85rem;font-weight:600;">Score agreement with Clay</p><code class="cmd">SCORE_ALLOW_UNCOMMITTED=yes npm run score -- --pass pass2</code>
+<p style="margin:0.75rem 0 0.15rem;font-size:0.85rem;font-weight:600;">Regenerate this page from frozen JSON</p><code class="cmd">npm run report</code>
+<p style="margin:0.75rem 0 0.15rem;font-size:0.85rem;font-weight:600;">Typecheck, lint, tests</p><code class="cmd">npm run check</code>
+    </section>
+
+    <section id="findings">
+      <details class="findings" open>
+        <summary>Findings — full Pass 2 table (100 apps)</summary>
+        <div id="filters">
+          <input type="search" id="search" placeholder="Search name…" aria-label="Search app name"/>
+          <select id="waveFilter" aria-label="Filter wave"><option value="">All waves</option>
+            <option value="not_buildable_no_public_api">Not buildable (no public API)</option><option value="not_buildable_cli_or_skill">Not buildable (CLI or skill only)</option><option value="wave_3">Wave 3</option><option value="wave_2">Wave 2</option><option value="unknown_no_docs">No usable docs found</option><option value="unknown_docs_silent">Docs found, don't state it</option><option value="sdk_or_mcp_only">SDK or MCP only</option><option value="wave_1">Wave 1</option><option value="unclassified">Unclassified</option>
+          </select>
+        </div>
+        <div class="table-scroll">
+          <table id="appTable">
+            <thead>
+              <tr><th>#</th><th>App</th><th>Auth</th><th>Access</th><th>Surface</th><th>Build</th><th>Wave</th><th>Evidence</th></tr>
+            </thead>
+            <tbody><tr data-name="salesforce" data-wave="unknown_docs_silent">
+      <td>1</td>
+      <td>Salesforce</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="hubspot" data-wave="wave_1">
+      <td>2</td>
+      <td>HubSpot</td>
+      <td>oauth2</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Wave 1</td>
+      <td><a href="https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="pipedrive" data-wave="unknown_docs_silent">
+      <td>3</td>
+      <td>Pipedrive</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://pipedrive.readme.io/docs/core-api-concepts-authentication" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="attio" data-wave="unknown_docs_silent">
+      <td>4</td>
+      <td>Attio</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.attio.com/docs/overview" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="twenty" data-wave="unknown_docs_silent">
+      <td>5</td>
+      <td>Twenty</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.twenty.com/developers/extend/api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="podio" data-wave="unknown_docs_silent">
+      <td>6</td>
+      <td>Podio</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.podio.com/authentication" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="zoho crm" data-wave="unknown_no_docs">
+      <td>7</td>
+      <td>Zoho CRM</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="close" data-wave="unknown_docs_silent">
+      <td>8</td>
+      <td>Close</td>
+      <td>oauth2|api_key|basic</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.close.com/api/overview" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="copper" data-wave="unknown_docs_silent">
+      <td>9</td>
+      <td>Copper</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.copper.com/introduction/authentication.html" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="dealcloud" data-wave="unknown_no_docs">
+      <td>10</td>
+      <td>DealCloud</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="zendesk" data-wave="wave_1">
+      <td>11</td>
+      <td>Zendesk</td>
+      <td>oauth2|basic</td>
+      <td>self_serve_trial</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Wave 1</td>
+      <td><a href="https://zendesk.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="intercom" data-wave="wave_1">
+      <td>12</td>
+      <td>Intercom</td>
+      <td>oauth2</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Wave 1</td>
+      <td><a href="https://developers.intercom.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="freshdesk" data-wave="unknown_docs_silent">
+      <td>13</td>
+      <td>Freshdesk</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.freshdesk.com/api/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="front" data-wave="unknown_no_docs">
+      <td>14</td>
+      <td>Front</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td><a href="https://dev.frontapp.com/docs/core-api-getting-started" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="pylon" data-wave="unknown_docs_silent">
+      <td>15</td>
+      <td>Pylon</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.usepylon.com/pylon-docs/developer/api/api-reference/accounts/activities" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="liveagent" data-wave="unknown_docs_silent">
+      <td>16</td>
+      <td>LiveAgent</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://support.liveagent.com/741982-API-key" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="plain" data-wave="unknown_docs_silent">
+      <td>17</td>
+      <td>Plain</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://www.plain.com/docs/graphql/reporting" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="help scout" data-wave="unknown_docs_silent">
+      <td>18</td>
+      <td>Help Scout</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.helpscout.com/mailbox-api/overview/authentication/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="gorgias" data-wave="unknown_no_docs">
+      <td>19</td>
+      <td>Gorgias</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="gladly" data-wave="unknown_no_docs">
+      <td>20</td>
+      <td>Gladly</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="slack" data-wave="unknown_docs_silent">
+      <td>21</td>
+      <td>Slack</td>
+      <td>oauth2</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://api.slack.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="twilio" data-wave="unknown_docs_silent">
+      <td>22</td>
+      <td>Twilio</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://www.twilio.com/docs/usage/workbench" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="zoho cliq" data-wave="unknown_no_docs">
+      <td>23</td>
+      <td>Zoho Cliq</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="lark (larksuite)" data-wave="unknown_docs_silent">
+      <td>24</td>
+      <td>Lark (Larksuite)</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="pumble" data-wave="unknown_docs_silent">
+      <td>25</td>
+      <td>Pumble</td>
+      <td>api_key</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="discord" data-wave="unknown_docs_silent">
+      <td>26</td>
+      <td>Discord</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://discord.com/developers/docs/intro" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="telegram" data-wave="unknown_docs_silent">
+      <td>27</td>
+      <td>Telegram</td>
+      <td>unknown</td>
+      <td>self_serve_free</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://core.telegram.org/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="whatsapp business" data-wave="unknown_docs_silent">
+      <td>28</td>
+      <td>WhatsApp Business</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.facebook.com/docs/whatsapp" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="aircall" data-wave="unknown_docs_silent">
+      <td>29</td>
+      <td>Aircall</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.aircall.io/docs/public-vs-private-app" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="vonage" data-wave="wave_1">
+      <td>30</td>
+      <td>Vonage</td>
+      <td>api_key|basic</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Wave 1</td>
+      <td><a href="https://developer.vonage.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="google ads" data-wave="unknown_no_docs">
+      <td>31</td>
+      <td>Google Ads</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="meta ads" data-wave="unknown_docs_silent">
+      <td>32</td>
+      <td>Meta Ads</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.facebook.com/docs/marketing-apis" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="linkedin ads" data-wave="unknown_docs_silent">
+      <td>33</td>
+      <td>LinkedIn Ads</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2026-06" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="gohighlevel" data-wave="unknown_no_docs">
+      <td>34</td>
+      <td>GoHighLevel</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td><a href="https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="mailchimp" data-wave="unknown_docs_silent">
+      <td>35</td>
+      <td>Mailchimp</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://mailchimp.com/developer/marketing/api-concepts" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="klaviyo" data-wave="unknown_docs_silent">
+      <td>36</td>
+      <td>Klaviyo</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.klaviyo.com/en/docs" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="systeme.io" data-wave="unknown_no_docs">
+      <td>37</td>
+      <td>systeme.io</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="pinterest" data-wave="unknown_docs_silent">
+      <td>38</td>
+      <td>Pinterest</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.pinterest.com/about-pinterest-mcp/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="threads (meta)" data-wave="unknown_docs_silent">
+      <td>39</td>
+      <td>Threads (Meta)</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.facebook.com/docs/threads" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="sendgrid" data-wave="unknown_docs_silent">
+      <td>40</td>
+      <td>SendGrid</td>
+      <td>unknown</td>
+      <td>self_serve_free</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="shopify" data-wave="unknown_docs_silent">
+      <td>41</td>
+      <td>Shopify</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://shopify.dev/docs/apps/launch/app-requirements-checklist" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="woocommerce" data-wave="unknown_docs_silent">
+      <td>42</td>
+      <td>WooCommerce</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://woocommerce.com/document/woocommerce-rest-api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="bigcommerce" data-wave="unknown_docs_silent">
+      <td>43</td>
+      <td>BigCommerce</td>
+      <td>unknown</td>
+      <td>self_serve_trial</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.bigcommerce.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="salesforce commerce cloud" data-wave="unknown_no_docs">
+      <td>44</td>
+      <td>Salesforce Commerce Cloud</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="magento (adobe commerce)" data-wave="unknown_docs_silent">
+      <td>45</td>
+      <td>Magento (Adobe Commerce)</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.adobe.com/commerce/webapi/get-started/authentication/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="squarespace" data-wave="unknown_docs_silent">
+      <td>46</td>
+      <td>Squarespace</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.squarespace.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="ecwid" data-wave="unknown_no_docs">
+      <td>47</td>
+      <td>Ecwid</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="gumroad" data-wave="unknown_docs_silent">
+      <td>48</td>
+      <td>Gumroad</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://gumroad.com/api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="amazon selling partner" data-wave="unknown_no_docs">
+      <td>49</td>
+      <td>Amazon Selling Partner</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="fanbasis" data-wave="unknown_no_docs">
+      <td>50</td>
+      <td>fanbasis</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td><a href="https://commasdocs.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="dataforseo" data-wave="unknown_docs_silent">
+      <td>51</td>
+      <td>DataForSEO</td>
+      <td>basic</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.dataforseo.com/v3/auth/?bash" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="se ranking" data-wave="unknown_docs_silent">
+      <td>52</td>
+      <td>SE Ranking</td>
+      <td>unknown</td>
+      <td>paid_plan</td>
+      <td>rest</td>
+      <td>needs_outreach</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://seranking.com/api-pricing.html" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="ahrefs" data-wave="unknown_docs_silent">
+      <td>53</td>
+      <td>Ahrefs</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://ahrefs.com/api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="mrscraper" data-wave="not_buildable_cli_or_skill">
+      <td>54</td>
+      <td>MrScraper</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>cli_only</td>
+      <td>cli_or_skill_only</td>
+      <td>Not buildable (CLI or skill only)</td>
+      <td><a href="https://docs.mrscraper.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="apify" data-wave="unknown_docs_silent">
+      <td>55</td>
+      <td>Apify</td>
+      <td>unknown</td>
+      <td>self_serve_free</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.apify.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="firecrawl" data-wave="unknown_no_docs">
+      <td>56</td>
+      <td>Firecrawl</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="bright data" data-wave="unknown_docs_silent">
+      <td>57</td>
+      <td>Bright Data</td>
+      <td>unknown</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://brightdata.com/products/serp-api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="sherlock" data-wave="unknown_docs_silent">
+      <td>58</td>
+      <td>Sherlock</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="waterfall.io" data-wave="unknown_docs_silent">
+      <td>59</td>
+      <td>Waterfall.io</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.waterfall.io/v1/introduction" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="clay" data-wave="unknown_no_docs">
+      <td>60</td>
+      <td>Clay</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="github" data-wave="unknown_docs_silent">
+      <td>61</td>
+      <td>GitHub</td>
+      <td>token</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.github.com/rest" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="vercel" data-wave="unknown_docs_silent">
+      <td>62</td>
+      <td>Vercel</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://vercel.com/docs/rest-api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="netlify" data-wave="unknown_docs_silent">
+      <td>63</td>
+      <td>Netlify</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://www.netlify.com/blog/2016/10/10/integrating-with-netlify-oauth2/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="cloudflare" data-wave="unknown_docs_silent">
+      <td>64</td>
+      <td>Cloudflare</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.cloudflare.com/fundamentals/api/reference/limits/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="supabase" data-wave="unknown_docs_silent">
+      <td>65</td>
+      <td>Supabase</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://supabase.com/docs" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="neo4j" data-wave="unknown_no_docs">
+      <td>66</td>
+      <td>Neo4j</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="snowflake" data-wave="unknown_docs_silent">
+      <td>67</td>
+      <td>Snowflake</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.snowflake.com/en/user-guide/authentication-policies" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="mongodb atlas" data-wave="unknown_docs_silent">
+      <td>68</td>
+      <td>MongoDB Atlas</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://mongodb.com/docs/atlas/configure-api-access/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="datadog" data-wave="unknown_docs_silent">
+      <td>69</td>
+      <td>Datadog</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.datadoghq.com/api/latest/authentication/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="sentry" data-wave="unknown_docs_silent">
+      <td>70</td>
+      <td>Sentry</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.sentry.io/api/auth/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="notion" data-wave="unknown_no_docs">
+      <td>71</td>
+      <td>Notion</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="airtable" data-wave="unknown_docs_silent">
+      <td>72</td>
+      <td>Airtable</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://airtable.com/developers/agents/mcp/getting-started" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="linear" data-wave="unknown_docs_silent">
+      <td>73</td>
+      <td>Linear</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.linear.app/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="jira" data-wave="unknown_docs_silent">
+      <td>74</td>
+      <td>Jira</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-other-operations/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="asana" data-wave="unknown_docs_silent">
+      <td>75</td>
+      <td>Asana</td>
+      <td>oauth2|token</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.asana.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="monday.com" data-wave="wave_1">
+      <td>76</td>
+      <td>Monday.com</td>
+      <td>oauth2</td>
+      <td>self_serve_free</td>
+      <td>graphql</td>
+      <td>build_now</td>
+      <td>Wave 1</td>
+      <td><a href="https://developer.monday.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="clickup" data-wave="unknown_docs_silent">
+      <td>77</td>
+      <td>ClickUp</td>
+      <td>oauth2|api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://clickup.com/api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="coda" data-wave="unknown_docs_silent">
+      <td>78</td>
+      <td>Coda</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://coda.io/developers" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="smartsheet" data-wave="unknown_docs_silent">
+      <td>79</td>
+      <td>Smartsheet</td>
+      <td>unknown</td>
+      <td>paid_plan</td>
+      <td>unknown</td>
+      <td>needs_outreach</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developers.smartsheet.com/api/smartsheet/introduction" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="harvest" data-wave="unknown_docs_silent">
+      <td>80</td>
+      <td>Harvest</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://harvestapp.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="stripe" data-wave="unknown_no_docs">
+      <td>81</td>
+      <td>Stripe</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="plaid" data-wave="unknown_docs_silent">
+      <td>82</td>
+      <td>Plaid</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://plaid.com/docs/account/billing/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="binance" data-wave="unknown_no_docs">
+      <td>83</td>
+      <td>Binance</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="paygent connect" data-wave="unknown_no_docs">
+      <td>84</td>
+      <td>Paygent Connect</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="ipayx" data-wave="unknown_docs_silent">
+      <td>85</td>
+      <td>iPayX</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://ipayx.ai/docs" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="quickbooks" data-wave="unknown_no_docs">
+      <td>86</td>
+      <td>QuickBooks</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="xero" data-wave="unknown_docs_silent">
+      <td>87</td>
+      <td>Xero</td>
+      <td>oauth2</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.xero.com/xero-developer-platform-commercial-terms" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="brex" data-wave="unknown_docs_silent">
+      <td>88</td>
+      <td>Brex</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://developer.brex.com/guides/authentication/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="ramp" data-wave="unknown_docs_silent">
+      <td>89</td>
+      <td>Ramp</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://docs.ramp.com/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="pitchbook" data-wave="unknown_no_docs">
+      <td>90</td>
+      <td>PitchBook</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="notebooklm" data-wave="unknown_docs_silent">
+      <td>91</td>
+      <td>NotebookLM</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://cloud.google.com/gemini" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="otter ai" data-wave="unknown_no_docs">
+      <td>92</td>
+      <td>Otter AI</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="fathom" data-wave="unknown_docs_silent">
+      <td>93</td>
+      <td>Fathom</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://fathom.video/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="consensus" data-wave="unknown_no_docs">
+      <td>94</td>
+      <td>Consensus</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="reducto" data-wave="unknown_docs_silent">
+      <td>95</td>
+      <td>Reducto</td>
+      <td>api_key</td>
+      <td>self_serve_free</td>
+      <td>unknown</td>
+      <td>build_now</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://reducto.ai/developers" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="devin" data-wave="unknown_no_docs">
+      <td>96</td>
+      <td>Devin</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>No usable docs found</td>
+      <td>—</td>
+    </tr>
+<tr data-name="higgsfield" data-wave="unknown_docs_silent">
+      <td>97</td>
+      <td>higgsfield</td>
+      <td>api_key</td>
+      <td>unknown</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://higgsfield.ai/higgsfield-api" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="mermaid cli" data-wave="not_buildable_cli_or_skill">
+      <td>98</td>
+      <td>Mermaid CLI</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>cli_only</td>
+      <td>cli_or_skill_only</td>
+      <td>Not buildable (CLI or skill only)</td>
+      <td><a href="https://github.com/mermaid-js/mermaid-cli" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="youtube transcript" data-wave="wave_1">
+      <td>99</td>
+      <td>YouTube Transcript</td>
+      <td>api_key</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>build_now</td>
+      <td>Wave 1</td>
+      <td><a href="https://transcriptapi.com/docs/getting-started/" target="_blank" rel="noopener">source</a></td>
+    </tr>
+<tr data-name="grain" data-wave="unknown_docs_silent">
+      <td>100</td>
+      <td>Grain</td>
+      <td>unknown</td>
+      <td>self_serve_free</td>
+      <td>rest</td>
+      <td>unknown</td>
+      <td>Docs found, don't state it</td>
+      <td><a href="https://grain.com/" target="_blank" rel="noopener">source</a></td>
+    </tr></tbody>
+          </table>
+        </div>
+      </details>
+      <p style="margin:0.75rem 0 0;font-size:0.88rem;"><a href="data.csv">data.csv</a> · same rows as the table</p>
+    </section>
+
+    <script type="application/json" id="research-data">{"generatedAt":"2026-11-25T18:52:30.670Z","metricLabel":"agreement_with_clay","evaluationNote":"Scores are agreement with Clay-exported reference values on the fixed 28-app sample, not established factual accuracy.","headline":{"waveCounts":{"not_buildable_no_public_api":0,"not_buildable_cli_or_skill":2,"wave_3":0,"wave_2":0,"unknown_no_docs":25,"unknown_docs_silent":67,"sdk_or_mcp_only":0,"wave_1":6,"unclassified":0},"waveTotal":100,"buildNow":9,"unknownAccess":83,"unknownAuth":54,"rowsWithQuotedEvidence":78,"retrievalHttpOnly":80,"retrievalExa":20},"patterns":{"topAuthModes":[{"label":"unknown","count":54},{"label":"oauth2","count":19},{"label":"api_key","count":11},{"label":"oauth2|api_key","count":10},{"label":"oauth2|api_key|basic","count":1},{"label":"oauth2|basic","count":1},{"label":"api_key|basic","count":1},{"label":"basic","count":1},{"label":"token","count":1},{"label":"oauth2|token","count":1}],"buildability":{"unknown":87,"build_now":9,"needs_outreach":2,"cli_or_skill_only":2}},"evaluation":{"sampleSize":28,"pass1":{"scoredFields":{"auth":{"agreementAmongAnswered":{"numerator":4,"denominator":8},"coverageOfEvaluable":{"numerator":8,"denominator":25},"abstentions":{"count":17},"mismatches":{"count":4},"unscorableClay":{"count":3}},"access":{"agreementAmongAnswered":{"numerator":0,"denominator":1},"coverageOfEvaluable":{"numerator":1,"denominator":24},"abstentions":{"count":23},"mismatches":{"count":1},"unscorableClay":{"count":4}},"apiSurface":{"agreementAmongAnswered":{"numerator":11,"denominator":15},"coverageOfEvaluable":{"numerator":15,"denominator":28},"abstentions":{"count":13},"mismatches":{"count":4},"unscorableClay":{"count":0}},"mcp":{"agreementAmongAnswered":{"numerator":11,"denominator":14},"coverageOfEvaluable":{"numerator":14,"denominator":28},"abstentions":{"count":14},"mismatches":{"count":3},"unscorableClay":{"count":0}},"buildability":{"agreementAmongAnswered":{"numerator":8,"denominator":10},"coverageOfEvaluable":{"numerator":10,"denominator":28},"abstentions":{"count":18},"mismatches":{"count":2},"unscorableClay":{"count":0}}},"evidenceCompliance":{"clayEvidenceEvaluable":{"numerator":28,"denominator":28},"agentUrlMatchesClay":{"numerator":4,"denominator":28},"agentHas2xxEvidence":{"numerator":17,"denominator":28},"agentQuoteNonEmpty":{"numerator":17,"denominator":28},"rows":[{"appId":1,"appName":"Salesforce","clayEvidenceEvaluable":true,"clayUrl":"https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm","clayQuote":"Total API Requests (Calls) Per 24-Hour Period by Salesforce Edition: Developer Edition: 15,000 calls/day","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":10,"appName":"DealCloud","clayEvidenceEvaluable":true,"clayUrl":"https://api.docs.dealcloud.com/mcp/authentication","clayQuote":"AI clients connect using OAuth 2.0.","agentEvidenceCount":3,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":11,"appName":"Zendesk","clayEvidenceEvaluable":true,"clayUrl":"https://developer.zendesk.com/api-reference/introduction/security-and-auth","clayQuote":"Existing customers using basic authentication or API tokens must migrate to OAuth access tokens.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":20,"appName":"Gladly","clayEvidenceEvaluable":true,"clayUrl":"https://developer.gladly.com/rest","clayQuote":"Gladly's REST API uses Basic authentication.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":21,"appName":"Slack","clayEvidenceEvaluable":true,"clayUrl":"https://docs.slack.dev/authentication/","clayQuote":"OAuth 2.0: Learn how to use OAuth 2.0 to securely authenticate users and request access tokens.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":30,"appName":"Vonage","clayEvidenceEvaluable":true,"clayUrl":"https://developer.vonage.com/en/getting-started/concepts/authentication","clayQuote":"Uses API Key and Secret via HTTP Basic Auth header","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":31,"appName":"Google Ads","clayEvidenceEvaluable":true,"clayUrl":"https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server","clayQuote":"The Google Ads MCP server provides a standardized bridge to the Google Ads API.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":40,"appName":"SendGrid","clayEvidenceEvaluable":true,"clayUrl":"https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication","clayQuote":"The Twilio SendGrid Web API v3 supports API keys, which add an additional layer of security to your account.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":41,"appName":"Shopify","clayEvidenceEvaluable":true,"clayUrl":"https://shopify.dev/docs/api/usage/authentication","clayQuote":"Every authenticated Shopify API request requires an access token sent in a request header.","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":50,"appName":"fanbasis","clayEvidenceEvaluable":true,"clayUrl":"https://www.tarvent.com/integrations/fanbasis","clayQuote":"Create an API key. To do this, go to Account > API Keys. Make sure to give access to the correct audiences.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":51,"appName":"DataForSEO","clayEvidenceEvaluable":true,"clayUrl":"https://docs.dataforseo.com/v3/auth","clayQuote":"DataForSEO uses Basic Authentication exclusively — it is the only way to access the API.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":60,"appName":"Clay","clayEvidenceEvaluable":true,"clayUrl":"https://developers.clay.com/quickstart","clayQuote":"Requests authenticate with a Clay API key in the `clay-api-key` header.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":61,"appName":"GitHub","clayEvidenceEvaluable":true,"clayUrl":"https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api","clayQuote":"Fine-grained PATs (recommended) or classic PATs are supported.","agentEvidenceCount":3,"agentUrlMatchesClay":true,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":70,"appName":"Sentry","clayEvidenceEvaluable":true,"clayUrl":"https://docs.sentry.io/api/auth","clayQuote":"User Authentication Tokens (Personal Access Tokens) - Associated with user account (not integration)","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":71,"appName":"Notion","clayEvidenceEvaluable":true,"clayUrl":"https://developers.notion.com/guides/notion-api/quick-start","clayQuote":"A personal access token (PAT) lets you authenticate API requests as yourself without setting up a connection or completing an OAuth flow.","agentEvidenceCount":3,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":80,"appName":"Harvest","clayEvidenceEvaluable":true,"clayUrl":"https://help.getharvest.com/api-v2/authentication-api/authentication/authentication","clayQuote":"The V2 API requires an access token to authenticate requests.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":81,"appName":"Stripe","clayEvidenceEvaluable":true,"clayUrl":"https://stripe.com/docs/api","clayQuote":"The Stripe API is organized around REST, our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.","agentEvidenceCount":2,"agentUrlMatchesClay":true,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":90,"appName":"PitchBook","clayEvidenceEvaluable":true,"clayUrl":"https://pitchbook.com/products/direct-access-data/api","clayQuote":"Our RESTful API utilizes JSON and is system agnostic, so you can integrate it into custom applications and CRMs to bring the industry's best data directly into your workflow.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":91,"appName":"NotebookLM","clayEvidenceEvaluable":true,"clayUrl":"https://developers.google.com/notebook/docs","clayQuote":"Configure OAuth 2.0 access tokens and scopes for API requests.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":100,"appName":"Grain","clayEvidenceEvaluable":true,"clayUrl":"https://developers.grain.com/","clayQuote":"A Personal Access Token (PAT) authenticates requests as you, with the same access you have in Grain. Generate one here: https://grain.com/app/settings/integrations?tab=api","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":58,"appName":"Sherlock","clayEvidenceEvaluable":true,"clayUrl":"https://github.com/sherlock-project/sherlock","clayQuote":"Hunt down social media accounts by username across 400+ social networks","agentEvidenceCount":1,"agentUrlMatchesClay":true,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":59,"appName":"Waterfall.io","clayEvidenceEvaluable":true,"clayUrl":"https://waterfall.io","clayQuote":"'--header 'x-waterfall-api-key: YOURKEY'","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":84,"appName":"Paygent Connect","clayEvidenceEvaluable":true,"clayUrl":"https://docs.nmi.com/reference/authentication","clayQuote":"Authentication across our APIs is done via secure API keys.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":85,"appName":"iPayX","clayEvidenceEvaluable":true,"clayUrl":"https://ipayx.ai/developers","clayQuote":"Keys generated/managed in Dashboard; must never be exposed client-side","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":92,"appName":"Otter AI","clayEvidenceEvaluable":true,"clayUrl":"https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server","clayQuote":"🔒 Security: All access is OAuth-authenticated with granular permissions.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":96,"appName":"Devin","clayEvidenceEvaluable":true,"clayUrl":"https://docs.devin.ai/api-reference/authentication","clayQuote":"All API credentials use the `cog_` prefix format.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":97,"appName":"higgsfield","clayEvidenceEvaluable":true,"clayUrl":"https://higgsfield.ai/cli","clayQuote":"Add the Higgsfield MCP server URL in your agent's settings and authenticate through your Higgsfield account.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":98,"appName":"Mermaid CLI","clayEvidenceEvaluable":true,"clayUrl":"https://github.com/mermaid-js/mermaid-cli","clayQuote":"Mermaid CLI (`mermaid-cli`) is a command-line interface (CLI) for the Mermaid library.","agentEvidenceCount":1,"agentUrlMatchesClay":true,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true}]},"fiveFieldAgreementAnswered":{"numerator":34,"denominator":48}},"pass2":{"scoredFields":{"auth":{"agreementAmongAnswered":{"numerator":6,"denominator":11},"coverageOfEvaluable":{"numerator":11,"denominator":25},"abstentions":{"count":14},"mismatches":{"count":5},"unscorableClay":{"count":3}},"access":{"agreementAmongAnswered":{"numerator":4,"denominator":5},"coverageOfEvaluable":{"numerator":5,"denominator":24},"abstentions":{"count":19},"mismatches":{"count":1},"unscorableClay":{"count":4}},"apiSurface":{"agreementAmongAnswered":{"numerator":10,"denominator":12},"coverageOfEvaluable":{"numerator":12,"denominator":28},"abstentions":{"count":16},"mismatches":{"count":2},"unscorableClay":{"count":0}},"mcp":{"agreementAmongAnswered":{"numerator":14,"denominator":17},"coverageOfEvaluable":{"numerator":17,"denominator":28},"abstentions":{"count":11},"mismatches":{"count":3},"unscorableClay":{"count":0}},"buildability":{"agreementAmongAnswered":{"numerator":4,"denominator":4},"coverageOfEvaluable":{"numerator":4,"denominator":28},"abstentions":{"count":24},"mismatches":{"count":0},"unscorableClay":{"count":0}}},"evidenceCompliance":{"clayEvidenceEvaluable":{"numerator":28,"denominator":28},"agentUrlMatchesClay":{"numerator":2,"denominator":28},"agentHas2xxEvidence":{"numerator":18,"denominator":28},"agentQuoteNonEmpty":{"numerator":18,"denominator":28},"rows":[{"appId":1,"appName":"Salesforce","clayEvidenceEvaluable":true,"clayUrl":"https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm","clayQuote":"Total API Requests (Calls) Per 24-Hour Period by Salesforce Edition: Developer Edition: 15,000 calls/day","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":10,"appName":"DealCloud","clayEvidenceEvaluable":true,"clayUrl":"https://api.docs.dealcloud.com/mcp/authentication","clayQuote":"AI clients connect using OAuth 2.0.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":11,"appName":"Zendesk","clayEvidenceEvaluable":true,"clayUrl":"https://developer.zendesk.com/api-reference/introduction/security-and-auth","clayQuote":"Existing customers using basic authentication or API tokens must migrate to OAuth access tokens.","agentEvidenceCount":4,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":20,"appName":"Gladly","clayEvidenceEvaluable":true,"clayUrl":"https://developer.gladly.com/rest","clayQuote":"Gladly's REST API uses Basic authentication.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":21,"appName":"Slack","clayEvidenceEvaluable":true,"clayUrl":"https://docs.slack.dev/authentication/","clayQuote":"OAuth 2.0: Learn how to use OAuth 2.0 to securely authenticate users and request access tokens.","agentEvidenceCount":4,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":30,"appName":"Vonage","clayEvidenceEvaluable":true,"clayUrl":"https://developer.vonage.com/en/getting-started/concepts/authentication","clayQuote":"Uses API Key and Secret via HTTP Basic Auth header","agentEvidenceCount":3,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":31,"appName":"Google Ads","clayEvidenceEvaluable":true,"clayUrl":"https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server","clayQuote":"The Google Ads MCP server provides a standardized bridge to the Google Ads API.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":40,"appName":"SendGrid","clayEvidenceEvaluable":true,"clayUrl":"https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication","clayQuote":"The Twilio SendGrid Web API v3 supports API keys, which add an additional layer of security to your account.","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":41,"appName":"Shopify","clayEvidenceEvaluable":true,"clayUrl":"https://shopify.dev/docs/api/usage/authentication","clayQuote":"Every authenticated Shopify API request requires an access token sent in a request header.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":50,"appName":"fanbasis","clayEvidenceEvaluable":true,"clayUrl":"https://www.tarvent.com/integrations/fanbasis","clayQuote":"Create an API key. To do this, go to Account > API Keys. Make sure to give access to the correct audiences.","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":51,"appName":"DataForSEO","clayEvidenceEvaluable":true,"clayUrl":"https://docs.dataforseo.com/v3/auth","clayQuote":"DataForSEO uses Basic Authentication exclusively — it is the only way to access the API.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":60,"appName":"Clay","clayEvidenceEvaluable":true,"clayUrl":"https://developers.clay.com/quickstart","clayQuote":"Requests authenticate with a Clay API key in the `clay-api-key` header.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":61,"appName":"GitHub","clayEvidenceEvaluable":true,"clayUrl":"https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api","clayQuote":"Fine-grained PATs (recommended) or classic PATs are supported.","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":70,"appName":"Sentry","clayEvidenceEvaluable":true,"clayUrl":"https://docs.sentry.io/api/auth","clayQuote":"User Authentication Tokens (Personal Access Tokens) - Associated with user account (not integration)","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":71,"appName":"Notion","clayEvidenceEvaluable":true,"clayUrl":"https://developers.notion.com/guides/notion-api/quick-start","clayQuote":"A personal access token (PAT) lets you authenticate API requests as yourself without setting up a connection or completing an OAuth flow.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":80,"appName":"Harvest","clayEvidenceEvaluable":true,"clayUrl":"https://help.getharvest.com/api-v2/authentication-api/authentication/authentication","clayQuote":"The V2 API requires an access token to authenticate requests.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":81,"appName":"Stripe","clayEvidenceEvaluable":true,"clayUrl":"https://stripe.com/docs/api","clayQuote":"The Stripe API is organized around REST, our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":90,"appName":"PitchBook","clayEvidenceEvaluable":true,"clayUrl":"https://pitchbook.com/products/direct-access-data/api","clayQuote":"Our RESTful API utilizes JSON and is system agnostic, so you can integrate it into custom applications and CRMs to bring the industry's best data directly into your workflow.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":91,"appName":"NotebookLM","clayEvidenceEvaluable":true,"clayUrl":"https://developers.google.com/notebook/docs","clayQuote":"Configure OAuth 2.0 access tokens and scopes for API requests.","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":100,"appName":"Grain","clayEvidenceEvaluable":true,"clayUrl":"https://developers.grain.com/","clayQuote":"A Personal Access Token (PAT) authenticates requests as you, with the same access you have in Grain. Generate one here: https://grain.com/app/settings/integrations?tab=api","agentEvidenceCount":5,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":58,"appName":"Sherlock","clayEvidenceEvaluable":true,"clayUrl":"https://github.com/sherlock-project/sherlock","clayQuote":"Hunt down social media accounts by username across 400+ social networks","agentEvidenceCount":1,"agentUrlMatchesClay":true,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":59,"appName":"Waterfall.io","clayEvidenceEvaluable":true,"clayUrl":"https://waterfall.io","clayQuote":"'--header 'x-waterfall-api-key: YOURKEY'","agentEvidenceCount":2,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":84,"appName":"Paygent Connect","clayEvidenceEvaluable":true,"clayUrl":"https://docs.nmi.com/reference/authentication","clayQuote":"Authentication across our APIs is done via secure API keys.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":85,"appName":"iPayX","clayEvidenceEvaluable":true,"clayUrl":"https://ipayx.ai/developers","clayQuote":"Keys generated/managed in Dashboard; must never be exposed client-side","agentEvidenceCount":1,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":92,"appName":"Otter AI","clayEvidenceEvaluable":true,"clayUrl":"https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server","clayQuote":"🔒 Security: All access is OAuth-authenticated with granular permissions.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":96,"appName":"Devin","clayEvidenceEvaluable":true,"clayUrl":"https://docs.devin.ai/api-reference/authentication","clayQuote":"All API credentials use the `cog_` prefix format.","agentEvidenceCount":0,"agentUrlMatchesClay":false,"agentHas2xxEvidence":false,"agentQuoteNonEmpty":false},{"appId":97,"appName":"higgsfield","clayEvidenceEvaluable":true,"clayUrl":"https://higgsfield.ai/cli","clayQuote":"Add the Higgsfield MCP server URL in your agent's settings and authenticate through your Higgsfield account.","agentEvidenceCount":3,"agentUrlMatchesClay":false,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true},{"appId":98,"appName":"Mermaid CLI","clayEvidenceEvaluable":true,"clayUrl":"https://github.com/mermaid-js/mermaid-cli","clayQuote":"Mermaid CLI (`mermaid-cli`) is a command-line interface (CLI) for the Mermaid library.","agentEvidenceCount":1,"agentUrlMatchesClay":true,"agentHas2xxEvidence":true,"agentQuoteNonEmpty":true}]},"fiveFieldAgreementAnswered":{"numerator":38,"denominator":49}}},"examples":{"clayMatch":{"app":"Salesforce","field":"auth","pass2Value":"oauth2","clayValue":"oauth2","note":"Pass 2 moved from abstention to an answered value that matches the Clay reference."},"clayMismatch":{"app":"Zendesk","field":"access","pass2Value":"self_serve_trial","clayValue":"self_serve_free","note":"Pass 2 quoted trial marketing copy; Clay labeled self-serve free. This is a disagreement with Clay, not proof of a factual error."},"operationalFailure":{"app":"DealCloud","issue":"HTTP 503 from the extraction provider","note":"The pipeline kept a schema-valid unknown placeholder with empty evidence."}},"workflow":{"command":"COST_OK=yes EXA_MAX_APPS=20 npm run pass2","promptPass1":"smoke-v3","promptPass2":"smoke-v4","tools":["HTTP doc discovery (hint URL plus same-site developer links, capped at eight pages)","Composio Exa Instant backup (EXA_SEARCH, EXA_GET_CONTENTS_ACTION) when login wording is missing","OpenRouter extraction with google/gemini-2.5-flash-lite","Quote-based generic verifier and Composio catalog match"]},"humanInvolvement":["A quick human check was done on the Clay sample labels before scoring.","The 28-app evaluation sample was fixed before any extraction.","Paid runs over five apps required an explicit cost estimate and COST_OK=yes."],"limitations":["Access and buildability stay unknown on most of the 100-app Pass 2 run (83 and 87 rows respectively).","Six apps had no usable page; DealCloud failed one model call.","Agreement with Clay does not prove either Clay or the agent is factually correct."],"headlineSummary":["On all 100 apps (Pass 2), 9 look buildable now with quoted evidence, but 83 still have unknown access and 54 have unknown auth.","78 rows carry at least one quoted URL; 20 needed Composio Exa backup search after HTTP.","92 apps land in an unknown wave because docs are missing or silent on gates (25 no usable docs, 67 docs present but no gating quote)."],"verificationRows":{"clayMatches":[{"appName":"Salesforce","field":"auth","agentValue":"oauth2","clayValue":"oauth2"},{"appName":"Salesforce","field":"apiSurface","agentValue":"rest","clayValue":"rest"},{"appName":"Salesforce","field":"mcp","agentValue":"none_found","clayValue":"none_found"},{"appName":"Zendesk","field":"apiSurface","agentValue":"rest","clayValue":"rest"},{"appName":"Zendesk","field":"mcp","agentValue":"none_found","clayValue":"none_found"},{"appName":"Zendesk","field":"buildability","agentValue":"build_now","clayValue":"build_now"},{"appName":"Slack","field":"auth","agentValue":"oauth2","clayValue":"oauth2"},{"appName":"Slack","field":"access","agentValue":"self_serve_free","clayValue":"self_serve_free"},{"appName":"Slack","field":"apiSurface","agentValue":"rest","clayValue":"rest"},{"appName":"Slack","field":"buildability","agentValue":"build_now","clayValue":"build_now"}],"clayMismatches":[{"appName":"Zendesk","field":"auth","agentValue":"basic|oauth2","clayValue":"oauth2"},{"appName":"Zendesk","field":"access","agentValue":"self_serve_trial","clayValue":"self_serve_free"},{"appName":"Slack","field":"mcp","agentValue":"official","clayValue":"none_found"},{"appName":"Vonage","field":"auth","agentValue":"api_key|basic","clayValue":"api_key"},{"appName":"Shopify","field":"mcp","agentValue":"none_found","clayValue":"official"},{"appName":"GitHub","field":"apiSurface","agentValue":"rest","clayValue":"both"},{"appName":"Sentry","field":"auth","agentValue":"oauth2","clayValue":"token"},{"appName":"NotebookLM","field":"auth","agentValue":"api_key","clayValue":"oauth2"},{"appName":"iPayX","field":"mcp","agentValue":"none_found","clayValue":"official"},{"appName":"higgsfield","field":"auth","agentValue":"api_key","clayValue":"other"},{"appName":"higgsfield","field":"apiSurface","agentValue":"rest","clayValue":"mcp_only"}]},"proof":{"localPreview":"Open site/index.html in a browser, or run: npx --yes serve site","commands":[{"label":"Re-run the 100-app pipeline (Pass 2)","command":"COST_OK=yes EXA_MAX_APPS=20 npm run pass2"},{"label":"Score agreement with Clay","command":"SCORE_ALLOW_UNCOMMITTED=yes npm run score -- --pass pass2"},{"label":"Regenerate this page from frozen JSON","command":"npm run report"},{"label":"Typecheck, lint, tests","command":"npm run check"}]},"apps":[{"id":1,"name":"Salesforce","category":"CRM and Sales","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"salesforce","evidenceUrls":["https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm","https://developer.salesforce.com/docs/platform/api-rest/guide/quickstart-oauth.html"],"promptVersion":"smoke-v4"},{"id":2,"name":"HubSpot","category":"CRM and Sales","auth":"oauth2","access":"self_serve_free","apiSurface":"rest","mcp":"none_found","buildability":"build_now","confidence":"high","wave":"wave_1","waveLabel":"Wave 1","retrievalMode":"composio_search","composioSlug":"hubspot","evidenceUrls":["https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview","https://developers.hubspot.com/docs/cms/start-building/introduction/overview"],"promptVersion":"smoke-v4"},{"id":3,"name":"Pipedrive","category":"CRM and Sales","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"pipedrive","evidenceUrls":["https://pipedrive.readme.io/docs/core-api-concepts-authentication","https://developers.pipedrive.com/docs/api/v1","https://developers.pipedrive.com/docs/api/v1/Oauth"],"promptVersion":"smoke-v4"},{"id":4,"name":"Attio","category":"CRM and Sales","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"attio","evidenceUrls":["https://docs.attio.com/docs/overview"],"promptVersion":"smoke-v4"},{"id":5,"name":"Twenty","category":"CRM and Sales","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"twenty","evidenceUrls":["https://docs.twenty.com/developers/extend/api","https://docs.twenty.com/developers/extend/oauth","https://twenty.com/"],"promptVersion":"smoke-v4"},{"id":6,"name":"Podio","category":"CRM and Sales","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"podio","evidenceUrls":["https://developers.podio.com/authentication"],"promptVersion":"smoke-v4"},{"id":7,"name":"Zoho CRM","category":"CRM and Sales","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":8,"name":"Close","category":"CRM and Sales","auth":"oauth2|api_key|basic","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"close","evidenceUrls":["https://developer.close.com/api/overview"],"promptVersion":"smoke-v4"},{"id":9,"name":"Copper","category":"CRM and Sales","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"copper","evidenceUrls":["https://developer.copper.com/introduction/authentication.html"],"promptVersion":"smoke-v4"},{"id":10,"name":"DealCloud","category":"CRM and Sales","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":11,"name":"Zendesk","category":"Support and Helpdesk","auth":"oauth2|basic","access":"self_serve_trial","apiSurface":"rest","mcp":"none_found","buildability":"build_now","confidence":"high","wave":"wave_1","waveLabel":"Wave 1","retrievalMode":"composio_search","composioSlug":"zendesk","evidenceUrls":["https://zendesk.com/","https://developer.zendesk.com/api-reference/introduction/security-and-auth/","https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests"],"promptVersion":"smoke-v4"},{"id":12,"name":"Intercom","category":"Support and Helpdesk","auth":"oauth2","access":"self_serve_free","apiSurface":"rest","mcp":"none_found","buildability":"build_now","confidence":"high","wave":"wave_1","waveLabel":"Wave 1","retrievalMode":"http_only","composioSlug":"intercom","evidenceUrls":["https://developers.intercom.com/","https://developers.intercom.com/docs/build-an-integration/getting-started/build-an-app-for-your-inbox/","https://developers.intercom.com/docs/guides/tickets/import-contacts"],"promptVersion":"smoke-v4"},{"id":13,"name":"Freshdesk","category":"Support and Helpdesk","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"freshdesk","evidenceUrls":["https://developers.freshdesk.com/api/"],"promptVersion":"smoke-v4"},{"id":14,"name":"Front","category":"Support and Helpdesk","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"medium","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"composio_search","composioSlug":"front","evidenceUrls":["https://dev.frontapp.com/docs/core-api-getting-started","https://dev.frontapp.com/reference/introduction"],"promptVersion":"smoke-v4"},{"id":15,"name":"Pylon","category":"Support and Helpdesk","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":["https://docs.usepylon.com/pylon-docs/developer/api/api-reference/accounts/activities","https://docs.usepylon.com/pylon-docs/developer/api/authentication"],"promptVersion":"smoke-v4"},{"id":16,"name":"LiveAgent","category":"Support and Helpdesk","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":["https://support.liveagent.com/741982-API-key"],"promptVersion":"smoke-v4"},{"id":17,"name":"Plain","category":"Support and Helpdesk","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"plain","evidenceUrls":["https://www.plain.com/docs/graphql/reporting"],"promptVersion":"smoke-v4"},{"id":18,"name":"Help Scout","category":"Support and Helpdesk","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"help_scout","evidenceUrls":["https://developer.helpscout.com/mailbox-api/overview/authentication/","https://developer.helpscout.com/"],"promptVersion":"smoke-v4"},{"id":19,"name":"Gorgias","category":"Support and Helpdesk","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"gorgias","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":20,"name":"Gladly","category":"Support and Helpdesk","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":21,"name":"Slack","category":"Communications and Messaging","auth":"oauth2","access":"self_serve_free","apiSurface":"rest","mcp":"official","buildability":"build_now","confidence":"high","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"slack","evidenceUrls":["https://api.slack.com/"],"promptVersion":"smoke-v4"},{"id":22,"name":"Twilio","category":"Communications and Messaging","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"twilio","evidenceUrls":["https://www.twilio.com/docs/usage/workbench"],"promptVersion":"smoke-v4"},{"id":23,"name":"Zoho Cliq","category":"Communications and Messaging","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"composio_search","composioSlug":"zoho_cliq","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":24,"name":"Lark (Larksuite)","category":"Communications and Messaging","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":["https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials","https://open.larksuite.com/document/server-docs/getting-started/api-access-token/g"],"promptVersion":"smoke-v4"},{"id":25,"name":"Pumble","category":"Communications and Messaging","auth":"api_key","access":"self_serve_free","apiSurface":"rest","mcp":"none_found","buildability":"build_now","confidence":"high","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"pumble","evidenceUrls":["https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/"],"promptVersion":"smoke-v4"},{"id":26,"name":"Discord","category":"Communications and Messaging","auth":"oauth2","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"discord","evidenceUrls":["https://discord.com/developers/docs/intro"],"promptVersion":"smoke-v4"},{"id":27,"name":"Telegram","category":"Communications and Messaging","auth":"unknown","access":"self_serve_free","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"telegram","evidenceUrls":["https://core.telegram.org/","https://core.telegram.org/api/url-authorization"],"promptVersion":"smoke-v4"},{"id":28,"name":"WhatsApp Business","category":"Communications and Messaging","auth":"oauth2","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://developers.facebook.com/docs/whatsapp","https://developers.facebook.com/documentation/data-portability/self-serve-testing"],"promptVersion":"smoke-v4"},{"id":29,"name":"Aircall","category":"Communications and Messaging","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"aircall","evidenceUrls":["https://developer.aircall.io/docs/public-vs-private-app","https://developers.aircall.io/api-references/"],"promptVersion":"smoke-v4"},{"id":30,"name":"Vonage","category":"Communications and Messaging","auth":"api_key|basic","access":"self_serve_free","apiSurface":"rest","mcp":"none_found","buildability":"build_now","confidence":"high","wave":"wave_1","waveLabel":"Wave 1","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://developer.vonage.com/","https://developer.vonage.com/en/concepts/guides/authentication"],"promptVersion":"smoke-v4"},{"id":31,"name":"Google Ads","category":"Marketing, Ads, Email and Social","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"googleads","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":32,"name":"Meta Ads","category":"Marketing, Ads, Email and Social","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"metaads","evidenceUrls":["https://developers.facebook.com/docs/marketing-apis","https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authentication","https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started/","https://developers.facebook.com/documentation/development/create-an-app/whatsapp-use-case"],"promptVersion":"smoke-v4"},{"id":33,"name":"LinkedIn Ads","category":"Marketing, Ads, Email and Social","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"linkedin_ads","evidenceUrls":["https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2026-06"],"promptVersion":"smoke-v4"},{"id":34,"name":"GoHighLevel","category":"Marketing, Ads, Email and Social","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"medium","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":["https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation","https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0/"],"promptVersion":"smoke-v4"},{"id":35,"name":"Mailchimp","category":"Marketing, Ads, Email and Social","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"mailchimp","evidenceUrls":["https://mailchimp.com/developer/marketing/api-concepts","https://mailchimp.com/developer/marketing/api/verified-domains/create-action-verify"],"promptVersion":"smoke-v4"},{"id":36,"name":"Klaviyo","category":"Marketing, Ads, Email and Social","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"klaviyo","evidenceUrls":["https://developers.klaviyo.com/en/docs"],"promptVersion":"smoke-v4"},{"id":37,"name":"systeme.io","category":"Marketing, Ads, Email and Social","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":38,"name":"Pinterest","category":"Marketing, Ads, Email and Social","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"pinterest","evidenceUrls":["https://developers.pinterest.com/about-pinterest-mcp/","https://developers.pinterest.com/terms/"],"promptVersion":"smoke-v4"},{"id":39,"name":"Threads (Meta)","category":"Marketing, Ads, Email and Social","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://developers.facebook.com/docs/threads","https://developers.facebook.com/documentation/data-portability/glossary-terms"],"promptVersion":"smoke-v4"},{"id":40,"name":"SendGrid","category":"Marketing, Ads, Email and Social","auth":"unknown","access":"self_serve_free","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"sendgrid","evidenceUrls":["https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication","https://sendgrid.com/"],"promptVersion":"smoke-v4"},{"id":41,"name":"Shopify","category":"Ecommerce","auth":"oauth2","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"shopify","evidenceUrls":["https://shopify.dev/docs/apps/launch/app-requirements-checklist"],"promptVersion":"smoke-v4"},{"id":42,"name":"WooCommerce","category":"Ecommerce","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://woocommerce.com/document/woocommerce-rest-api"],"promptVersion":"smoke-v4"},{"id":43,"name":"BigCommerce","category":"Ecommerce","auth":"unknown","access":"self_serve_trial","apiSurface":"rest","mcp":"official","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"bigcommerce","evidenceUrls":["https://developer.bigcommerce.com/","https://developer.bigcommerce.com/developer/api-reference/rest/admin/management/settings","https://developer.bigcommerce.com/developer/api-reference/mcp/storefront/tools"],"promptVersion":"smoke-v4"},{"id":44,"name":"Salesforce Commerce Cloud","category":"Ecommerce","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":45,"name":"Magento (Adobe Commerce)","category":"Ecommerce","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":["https://developer.adobe.com/commerce/webapi/get-started/authentication/","https://developer.adobe.com/commerce/webapi/rest/authentication/"],"promptVersion":"smoke-v4"},{"id":46,"name":"Squarespace","category":"Ecommerce","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"official","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://developers.squarespace.com/","https://developers.squarespace.com/changes/self-service-oauth-credential-management","https://developers.squarespace.com/oauth","https://developers.squarespace.com/commerce-apis/authentication-and-permissions","https://developers.squarespace.com/mcp/overview"],"promptVersion":"smoke-v4"},{"id":47,"name":"Ecwid","category":"Ecommerce","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":48,"name":"Gumroad","category":"Ecommerce","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"composio_search","composioSlug":"gumroad","evidenceUrls":["https://gumroad.com/api"],"promptVersion":"smoke-v4"},{"id":49,"name":"Amazon Selling Partner","category":"Ecommerce","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":50,"name":"fanbasis","category":"Ecommerce","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"medium","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"composio_search","composioSlug":null,"evidenceUrls":["https://commasdocs.com/","https://github.com/subtain-haider/laravel-payments/blob/main/docs/gateways/fanbasis.md"],"promptVersion":"smoke-v4"},{"id":51,"name":"DataForSEO","category":"Data, SEO and Scraping","auth":"basic","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"dataforseo","evidenceUrls":["https://docs.dataforseo.com/v3/auth/?bash"],"promptVersion":"smoke-v4"},{"id":52,"name":"SE Ranking","category":"Data, SEO and Scraping","auth":"unknown","access":"paid_plan","apiSurface":"rest","mcp":"official","buildability":"needs_outreach","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://seranking.com/api-pricing.html"],"promptVersion":"smoke-v4"},{"id":53,"name":"Ahrefs","category":"Data, SEO and Scraping","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"ahrefs","evidenceUrls":["https://ahrefs.com/api"],"promptVersion":"smoke-v4"},{"id":54,"name":"MrScraper","category":"Data, SEO and Scraping","auth":"unknown","access":"unknown","apiSurface":"cli_only","mcp":"unknown","buildability":"cli_or_skill_only","confidence":"medium","wave":"not_buildable_cli_or_skill","waveLabel":"Not buildable (CLI or skill only)","retrievalMode":"http_only","composioSlug":"mrscraper","evidenceUrls":["https://docs.mrscraper.com/"],"promptVersion":"smoke-v4"},{"id":55,"name":"Apify","category":"Data, SEO and Scraping","auth":"unknown","access":"self_serve_free","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"apify","evidenceUrls":["https://docs.apify.com/"],"promptVersion":"smoke-v4"},{"id":56,"name":"Firecrawl","category":"Data, SEO and Scraping","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"firecrawl","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":57,"name":"Bright Data","category":"Data, SEO and Scraping","auth":"unknown","access":"self_serve_free","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"brightdata","evidenceUrls":["https://brightdata.com/products/serp-api"],"promptVersion":"smoke-v4"},{"id":58,"name":"Sherlock","category":"Data, SEO and Scraping","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://github.com/sherlock-project/sherlock"],"promptVersion":"smoke-v4"},{"id":59,"name":"Waterfall.io","category":"Data, SEO and Scraping","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://docs.waterfall.io/v1/introduction","https://docs.waterfall.io/v1/authentication"],"promptVersion":"smoke-v4"},{"id":60,"name":"Clay","category":"Data, SEO and Scraping","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"clay","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":61,"name":"GitHub","category":"Developer, Infra and Data platforms","auth":"token","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"github","evidenceUrls":["https://docs.github.com/rest","https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"],"promptVersion":"smoke-v4"},{"id":62,"name":"Vercel","category":"Developer, Infra and Data platforms","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"vercel","evidenceUrls":["https://vercel.com/docs/rest-api","https://vercel.com/docs/plans/pro"],"promptVersion":"smoke-v4"},{"id":63,"name":"Netlify","category":"Developer, Infra and Data platforms","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://www.netlify.com/blog/2016/10/10/integrating-with-netlify-oauth2/","https://docs.netlify.com/build/data-and-storage/netlify-database/api"],"promptVersion":"smoke-v4"},{"id":64,"name":"Cloudflare","category":"Developer, Infra and Data platforms","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"cloudflare","evidenceUrls":["https://developers.cloudflare.com/fundamentals/api/reference/limits/","https://developers.cloudflare.com/api/resources/iam/subresources/oauth_clients/methods/list"],"promptVersion":"smoke-v4"},{"id":65,"name":"Supabase","category":"Developer, Infra and Data platforms","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"supabase","evidenceUrls":["https://supabase.com/docs","https://supabase.com/docs/guides/getting-started/api-keys","https://supabase.com/docs/reference/javascript/initializing"],"promptVersion":"smoke-v4"},{"id":66,"name":"Neo4j","category":"Developer, Infra and Data platforms","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"neo4j","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":67,"name":"Snowflake","category":"Developer, Infra and Data platforms","auth":"oauth2","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"snowflake","evidenceUrls":["https://docs.snowflake.com/en/user-guide/authentication-policies"],"promptVersion":"smoke-v4"},{"id":68,"name":"MongoDB Atlas","category":"Developer, Infra and Data platforms","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://mongodb.com/docs/atlas/configure-api-access/"],"promptVersion":"smoke-v4"},{"id":69,"name":"Datadog","category":"Developer, Infra and Data platforms","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"datadog","evidenceUrls":["https://docs.datadoghq.com/api/latest/authentication/"],"promptVersion":"smoke-v4"},{"id":70,"name":"Sentry","category":"Developer, Infra and Data platforms","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"sentry","evidenceUrls":["https://docs.sentry.io/api/auth/"],"promptVersion":"smoke-v4"},{"id":71,"name":"Notion","category":"Productivity and Project Management","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"notion","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":72,"name":"Airtable","category":"Productivity and Project Management","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"airtable","evidenceUrls":["https://airtable.com/developers/agents/mcp/getting-started"],"promptVersion":"smoke-v4"},{"id":73,"name":"Linear","category":"Productivity and Project Management","auth":"oauth2|api_key","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"linear","evidenceUrls":["https://developers.linear.app/"],"promptVersion":"smoke-v4"},{"id":74,"name":"Jira","category":"Productivity and Project Management","auth":"oauth2","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"jira","evidenceUrls":["https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-other-operations/","https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-jira-expressions/","https://developer.atlassian.com/changelog/"],"promptVersion":"smoke-v4"},{"id":75,"name":"Asana","category":"Productivity and Project Management","auth":"oauth2|token","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"asana","evidenceUrls":["https://developers.asana.com/","https://developers.asana.com/docs"],"promptVersion":"smoke-v4"},{"id":76,"name":"Monday.com","category":"Productivity and Project Management","auth":"oauth2","access":"self_serve_free","apiSurface":"graphql","mcp":"official","buildability":"build_now","confidence":"high","wave":"wave_1","waveLabel":"Wave 1","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://developer.monday.com/","https://developer.monday.com/api-reference/docs/basics"],"promptVersion":"smoke-v4"},{"id":77,"name":"ClickUp","category":"Productivity and Project Management","auth":"oauth2|api_key","access":"unknown","apiSurface":"rest","mcp":"official","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"clickup","evidenceUrls":["https://clickup.com/api","https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server","https://developer.clickup.com/docs/webhooktaskpayloads"],"promptVersion":"smoke-v4"},{"id":78,"name":"Coda","category":"Productivity and Project Management","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"coda","evidenceUrls":["https://coda.io/developers","https://coda.io/apis/v1/openapi.yaml"],"promptVersion":"smoke-v4"},{"id":79,"name":"Smartsheet","category":"Productivity and Project Management","auth":"unknown","access":"paid_plan","apiSurface":"unknown","mcp":"none_found","buildability":"needs_outreach","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"smartsheet","evidenceUrls":["https://developers.smartsheet.com/api/smartsheet/introduction"],"promptVersion":"smoke-v4"},{"id":80,"name":"Harvest","category":"Productivity and Project Management","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"harvest","evidenceUrls":["https://harvestapp.com/"],"promptVersion":"smoke-v4"},{"id":81,"name":"Stripe","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":"stripe","evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":82,"name":"Plaid","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"plaid","evidenceUrls":["https://plaid.com/docs/account/billing/","https://plaid.com/docs/check/servicing/"],"promptVersion":"smoke-v4"},{"id":83,"name":"Binance","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":84,"name":"Paygent Connect","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":85,"name":"iPayX","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://ipayx.ai/docs"],"promptVersion":"smoke-v4"},{"id":86,"name":"QuickBooks","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":87,"name":"Xero","category":"Finance and Fintech","auth":"oauth2","access":"unknown","apiSurface":"unknown","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"xero","evidenceUrls":["https://developer.xero.com/xero-developer-platform-commercial-terms","https://developer.xero.com/documentation/guides/oauth2/overview"],"promptVersion":"smoke-v4"},{"id":88,"name":"Brex","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"brex","evidenceUrls":["https://developer.brex.com/guides/authentication/","https://developer.brex.com/guides/api-launch-stages"],"promptVersion":"smoke-v4"},{"id":89,"name":"Ramp","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"ramp","evidenceUrls":["https://docs.ramp.com/"],"promptVersion":"smoke-v4"},{"id":90,"name":"PitchBook","category":"Finance and Fintech","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":91,"name":"NotebookLM","category":"AI, Research and Media-native","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"notebook_lm","evidenceUrls":["https://cloud.google.com/gemini"],"promptVersion":"smoke-v4"},{"id":92,"name":"Otter AI","category":"AI, Research and Media-native","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":93,"name":"Fathom","category":"AI, Research and Media-native","auth":"unknown","access":"unknown","apiSurface":"rest","mcp":"none_found","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"fathom","evidenceUrls":["https://fathom.video/"],"promptVersion":"smoke-v4"},{"id":94,"name":"Consensus","category":"AI, Research and Media-native","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":95,"name":"Reducto","category":"AI, Research and Media-native","auth":"api_key","access":"self_serve_free","apiSurface":"unknown","mcp":"none_found","buildability":"build_now","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://reducto.ai/developers","https://reducto.ai/"],"promptVersion":"smoke-v4"},{"id":96,"name":"Devin","category":"AI, Research and Media-native","auth":"unknown","access":"unknown","apiSurface":"unknown","mcp":"unknown","buildability":"unknown","confidence":"low","wave":"unknown_no_docs","waveLabel":"No usable docs found","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":[],"promptVersion":"smoke-v4"},{"id":97,"name":"higgsfield","category":"AI, Research and Media-native","auth":"api_key","access":"unknown","apiSurface":"rest","mcp":"official","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"higgsfield","evidenceUrls":["https://higgsfield.ai/higgsfield-api","https://docs.higgsfield.ai/docs"],"promptVersion":"smoke-v4"},{"id":98,"name":"Mermaid CLI","category":"AI, Research and Media-native","auth":"unknown","access":"unknown","apiSurface":"cli_only","mcp":"none_found","buildability":"cli_or_skill_only","confidence":"medium","wave":"not_buildable_cli_or_skill","waveLabel":"Not buildable (CLI or skill only)","retrievalMode":"http_only","composioSlug":null,"evidenceUrls":["https://github.com/mermaid-js/mermaid-cli"],"promptVersion":"smoke-v4"},{"id":99,"name":"YouTube Transcript","category":"AI, Research and Media-native","auth":"api_key","access":"self_serve_free","apiSurface":"rest","mcp":"official","buildability":"build_now","confidence":"high","wave":"wave_1","waveLabel":"Wave 1","retrievalMode":"http_only","composioSlug":"youtube_transcript","evidenceUrls":["https://transcriptapi.com/docs/getting-started/","https://transcriptapi.com/docs/mcp/chatgpt/","https://transcriptapi.com/docs/api/"],"promptVersion":"smoke-v4"},{"id":100,"name":"Grain","category":"AI, Research and Media-native","auth":"unknown","access":"self_serve_free","apiSurface":"rest","mcp":"official","buildability":"unknown","confidence":"medium","wave":"unknown_docs_silent","waveLabel":"Docs found, don't state it","retrievalMode":"http_only","composioSlug":"grain","evidenceUrls":["https://grain.com/"],"promptVersion":"smoke-v4"}]}</script>
+  </main>
+  <footer>Generated 2026-11-25T18:52:30.670Z from data/runs/pass2 and metrics JSON.</footer>
+  <script>
+    const search = document.getElementById("search");
+    const waveFilter = document.getElementById("waveFilter");
+    const rows = [...document.querySelectorAll("#appTable tbody tr")];
+    function applyFilters() {
+      const q = (search && search.value || "").trim().toLowerCase();
+      const wave = waveFilter ? waveFilter.value : "";
+      for (const row of rows) {
+        const name = row.getAttribute("data-name") || "";
+        const rowWave = row.getAttribute("data-wave") || "";
+        row.style.display = (!q || name.includes(q)) && (!wave || rowWave === wave) ? "" : "none";
+      }
+    }
+    if (search) search.addEventListener("input", applyFilters);
+    if (waveFilter) waveFilter.addEventListener("change", applyFilters);
+  </script>
+</body>
+</html>
