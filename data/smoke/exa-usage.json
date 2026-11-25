@@ -1,0 +1,170 @@
+[
+  {
+    "at": "2026-11-25T12:09:22.013Z",
+    "app": "Otter AI",
+    "slug": "EXA_SEARCH",
+    "cached": false,
+    "listedUsd": 0.007,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:09:22.771Z",
+    "app": "Otter AI",
+    "slug": "EXA_GET_CONTENTS_ACTION",
+    "cached": false,
+    "listedUsd": 0.003,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:09:53.622Z",
+    "app": "Otter AI",
+    "slug": "EXA_SEARCH",
+    "cached": true,
+    "listedUsd": 0,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:09:53.623Z",
+    "app": "Otter AI",
+    "slug": "EXA_GET_CONTENTS_ACTION",
+    "cached": true,
+    "listedUsd": 0,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:10:56.012Z",
+    "app": "Otter AI",
+    "slug": "EXA_SEARCH",
+    "cached": true,
+    "listedUsd": 0,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:10:56.012Z",
+    "app": "Otter AI",
+    "slug": "EXA_GET_CONTENTS_ACTION",
+    "cached": true,
+    "listedUsd": 0,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:49:26.086Z",
+    "app": "HubSpot",
+    "slug": "EXA_SEARCH",
+    "cached": false,
+    "listedUsd": 0.007,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:49:26.707Z",
+    "app": "HubSpot",
+    "slug": "EXA_GET_CONTENTS_ACTION",
+    "cached": false,
+    "listedUsd": 0.002,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:49:27.597Z",
+    "app": "Pipedrive",
+    "slug": "EXA_SEARCH",
+    "cached": false,
+    "listedUsd": 0.007,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T12:49:28.197Z",
+    "app": "Pipedrive",
+    "slug": "EXA_GET_CONTENTS_ACTION",
+    "cached": false,
+    "listedUsd": 0.003,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T16:41:51.247Z",
+    "app": "HubSpot",
+    "slug": "EXA_SEARCH",
+    "cached": true,
+    "listedUsd": 0,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  },
+  {
+    "at": "2026-11-25T16:41:51.247Z",
+    "app": "HubSpot",
+    "slug": "EXA_GET_CONTENTS_ACTION",
+    "cached": true,
+    "listedUsd": 0,
+    "discountPercent": 100,
+    "instantCharge": {
+      "amount": "0.000000",
+      "currency": "USD",
+      "charged_by": "composio"
+    },
+    "costDollars": null
+  }
+]

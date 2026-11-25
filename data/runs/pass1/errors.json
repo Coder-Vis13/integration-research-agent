@@ -1,0 +1,117 @@
+{
+  "metricLabel": "agreement_with_clay",
+  "mismatches": [
+    {
+      "appId": 10,
+      "appName": "DealCloud",
+      "field": "auth",
+      "agentValue": "api_key|oauth2",
+      "clayValue": "oauth2",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 10,
+      "appName": "DealCloud",
+      "field": "buildability",
+      "agentValue": "build_now",
+      "clayValue": "needs_outreach",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 21,
+      "appName": "Slack",
+      "field": "mcp",
+      "agentValue": "official",
+      "clayValue": "none_found",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 41,
+      "appName": "Shopify",
+      "field": "apiSurface",
+      "agentValue": "rest",
+      "clayValue": "both",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 60,
+      "appName": "Clay",
+      "field": "access",
+      "agentValue": "self_serve_trial",
+      "clayValue": "self_serve_free",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 60,
+      "appName": "Clay",
+      "field": "apiSurface",
+      "agentValue": "cli_only",
+      "clayValue": "rest",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 60,
+      "appName": "Clay",
+      "field": "mcp",
+      "agentValue": "official",
+      "clayValue": "none_found",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 61,
+      "appName": "GitHub",
+      "field": "auth",
+      "agentValue": "oauth2|token",
+      "clayValue": "token",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 61,
+      "appName": "GitHub",
+      "field": "apiSurface",
+      "agentValue": "rest",
+      "clayValue": "both",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 70,
+      "appName": "Sentry",
+      "field": "auth",
+      "agentValue": "oauth2",
+      "clayValue": "token",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 70,
+      "appName": "Sentry",
+      "field": "apiSurface",
+      "agentValue": "cli_only",
+      "clayValue": "rest",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 71,
+      "appName": "Notion",
+      "field": "auth",
+      "agentValue": "api_key|oauth2",
+      "clayValue": "token",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 85,
+      "appName": "iPayX",
+      "field": "mcp",
+      "agentValue": "none_found",
+      "clayValue": "official",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 98,
+      "appName": "Mermaid CLI",
+      "field": "buildability",
+      "agentValue": "build_now",
+      "clayValue": "cli_or_skill_only",
+      "errorType": "mismatch"
+    }
+  ]
+}

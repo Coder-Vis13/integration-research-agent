@@ -1,2 +1,6 @@
 .env
 node_modules
+private/
+data/cache/
+.DS_Store
+.cursor/

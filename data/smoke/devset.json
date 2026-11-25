@@ -1,0 +1,498 @@
+{
+  "catalog": "Live catalog loaded from cache.",
+  "exa": [
+    {
+      "at": "2026-11-25T12:49:26.086Z",
+      "app": "HubSpot",
+      "slug": "EXA_SEARCH",
+      "cached": false,
+      "listedUsd": 0.007,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    },
+    {
+      "at": "2026-11-25T12:49:26.707Z",
+      "app": "HubSpot",
+      "slug": "EXA_GET_CONTENTS_ACTION",
+      "cached": false,
+      "listedUsd": 0.002,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    },
+    {
+      "at": "2026-11-25T12:49:27.597Z",
+      "app": "Pipedrive",
+      "slug": "EXA_SEARCH",
+      "cached": false,
+      "listedUsd": 0.007,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    },
+    {
+      "at": "2026-11-25T12:49:28.197Z",
+      "app": "Pipedrive",
+      "slug": "EXA_GET_CONTENTS_ACTION",
+      "cached": false,
+      "listedUsd": 0.003,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    }
+  ],
+  "apps": [
+    {
+      "id": 2,
+      "name": "HubSpot",
+      "record": {
+        "oneLiner": "HubSpot offers a comprehensive platform for marketing, sales, and customer service software.",
+        "auth": [
+          "oauth2",
+          "api_key"
+        ],
+        "access": "self_serve_free",
+        "apiSurface": "rest",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "hubspot",
+          "authSchemes": [
+            "OAUTH2",
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 354,
+          "triggersCount": 2,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "yes",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:26.707Z",
+            "quote": "If you plan to distribute your app to multiple accounts (either through listing on the HubSpot Marketplace or by managing specific authorized accounts), your app must be built using OAuth authentication."
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:26.707Z",
+            "quote": "Developer API keys Some app features and settings require a developer API key, which is available in the developer overview of your HubSpot account."
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/cms/start-building/introduction/overview",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:23.393Z",
+            "quote": "Create a free developer account , then create a test account within it."
+          }
+        ],
+        "confidence": "high",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe"
+      },
+      "retrieval": {
+        "mode": "composio_search",
+        "sentence": "Composio search used EXA_SEARCH, then EXA_GET_CONTENTS_ACTION.",
+        "searchSlug": "EXA_SEARCH"
+      },
+      "usage": {
+        "inputTokens": 24219,
+        "outputTokens": 639
+      }
+    },
+    {
+      "id": 3,
+      "name": "Pipedrive",
+      "record": {
+        "oneLiner": "Pipedrive is a web-based sales CRM that helps small businesses manage leads, track sales activities, and close more deals by streamlining processes, automating follow-ups, and providing real-time sales insights.",
+        "auth": [
+          "oauth2"
+        ],
+        "access": "unknown",
+        "apiSurface": "rest",
+        "apiBreadth": "unknown",
+        "mcp": "none_found",
+        "mcpUrl": "https://pipedrive.com/marketplace",
+        "composio": {
+          "slug": "pipedrive",
+          "authSchemes": [
+            "OAUTH2",
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 404,
+          "triggersCount": 3,
+          "authDisagreement": true
+        },
+        "webhooks": "yes",
+        "openApiSpecUrl": "https://developers.pipedrive.com/docs/api/v1",
+        "sandbox": "yes",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "unknown",
+        "evidence": [
+          {
+            "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:28.197Z",
+            "quote": "Non-vendor source. All requests to our API need authentication.\n\nIf you're creating an app\n\nContinue to OAuth 2.0 overview. You can find our step-by-step guide to getting OAuth 2.0 implemented in your app in OAuth authorization .\n\nIf you're working with an API token integration\n\nThe API token must be provided in the `x-api-token` header for all requests, for example:\n\n```\ncurl --request GET \\\n--url \"https://companydomain.pipedrive.com/api/v2/deals\" \\\n--header \"x-api-token: 659c9fddb16335e48cc67114694b52074e812e03\"\n```"
+          },
+          {
+            "url": "https://developers.pipedrive.com/docs/api/v1/Oauth",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:28.197Z",
+            "quote": "Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace. Authorization via OAuth 2.0 is a well-known and stable way to get fine-grained access to an API. To retrieve OAuth2 tokens you should send requests to the `https://oauth.pipedrive.com` domain. After registering the app, you must add the necessary server-side logic to your app to establish the OAuth flow. Please read more about authorization step on the Pipedrive Developers page."
+          },
+          {
+            "url": "https://developers.pipedrive.com/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:16.000Z",
+            "quote": "Easily build integrations with our API and developer platform to reach over 100,000 companies through the Pipedrive Marketplace"
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "unknown"
+      },
+      "retrieval": {
+        "mode": "composio_search",
+        "sentence": "Composio search used EXA_SEARCH, then EXA_GET_CONTENTS_ACTION.",
+        "searchSlug": "EXA_SEARCH"
+      },
+      "usage": {
+        "inputTokens": 7027,
+        "outputTokens": 837
+      }
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "record": {
+        "oneLiner": "Twenty is an open-source CRM platform that allows developers to build custom CRM applications using TypeScript and a provided SDK. It offers both REST and GraphQL APIs for data access and management, supports webhooks for real-time notifications, and integrates with AI tools.",
+        "auth": [
+          "oauth2",
+          "api_key"
+        ],
+        "access": "unknown",
+        "apiSurface": "rest",
+        "apiBreadth": "broad",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "twenty",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 23,
+          "triggersCount": 0,
+          "authDisagreement": true
+        },
+        "webhooks": "yes",
+        "openApiSpecUrl": null,
+        "sandbox": "unknown",
+        "pricingForApi": "free",
+        "rateLimit": "100 per minute",
+        "buildability": "unknown",
+        "blocker": "The quoted text does not support a buildability verdict.",
+        "evidence": [
+          {
+            "url": "https://docs.twenty.com/developers/extend/api",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:08:29.278Z",
+            "quote": "Base URLs Environment Base URL Cloud https://api.twenty.com/ Self-Hosted https://{your-domain}/ Authentication Authorization: Bearer YOUR_API_KEY Create an API key in Settings → Developers → API → + Create key . Copy it immediately — it’s shown once. Keys can be scoped to a specific role under Settings → Members → Roles → Assignment tab to limit what they can access. For OAuth-based access (external apps acting on behalf of users), see OAuth ."
+          },
+          {
+            "url": "https://docs.twenty.com/developers/extend/oauth",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:28.294Z",
+            "quote": "Twenty implements OAuth 2.0 with authorization code + PKCE for user-facing apps and client credentials for server-to-server access."
+          },
+          {
+            "url": "https://docs.twenty.com/developers/extend/api",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:08:29.278Z",
+            "quote": "Rate limits Limit Value Requests 100 per minute Batch size 60 records per call"
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "The saved text does not support the claimed access or API surface."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 16774,
+        "outputTokens": 766
+      }
+    },
+    {
+      "id": 25,
+      "name": "Pumble",
+      "record": {
+        "oneLiner": "Pumble is a free business communication tool that offers features like channels, messages, threads, notifications, video calls, and voice calls. It also integrates with other apps and allows for external guest collaboration.",
+        "auth": [
+          "api_key"
+        ],
+        "access": "self_serve_free",
+        "apiSurface": "rest",
+        "apiBreadth": "moderate",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "pumble",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 9,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "free",
+        "rateLimit": "1000 requests per minute per user",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "By using the Pumble API addon, you can interact with Pumble’s API documentation without using any complex authentication processes. This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests."
+          },
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "The rate limit is up to 1000 requests per minute per user."
+          },
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "Available on all plans"
+          }
+        ],
+        "confidence": "high",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe"
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 7935,
+        "outputTokens": 566
+      }
+    },
+    {
+      "id": 47,
+      "name": "Ecwid",
+      "record": {
+        "oneLiner": "Ecwid's REST API allows for managing store data, payments, shipping, and storefront settings, with OAuth 2.0 authorization simplified for single-store customizations.",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "apiBreadth": "unknown",
+        "mcp": "unknown",
+        "composio": {
+          "slug": null,
+          "authSchemes": [],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 0,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The access level for this API is not specified, preventing determination of buildability.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "The access level for this API is not specified."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 10306,
+        "outputTokens": 462
+      }
+    },
+    {
+      "id": 26,
+      "name": "Discord",
+      "record": {
+        "oneLiner": "Build bots and integrations on Discord, or connect your game with rich presence, voice chat, and more.",
+        "auth": [
+          "oauth2"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "apiBreadth": "unknown",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "discord",
+          "authSchemes": [
+            "OAUTH2"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 23,
+          "triggersCount": 1,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "yes",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The Discord API provides documentation for its REST API, but it does not specify the exact access level required to use it.",
+        "evidence": [
+          {
+            "url": "https://discord.com/developers/docs/intro",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:28.858Z",
+            "quote": "Build bots and integrations on Discord, or connect your game with rich presence, voice chat, and more."
+          },
+          {
+            "url": "https://discord.com/developers/docs/intro",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:28.858Z",
+            "quote": "OAuth2 & Permissions"
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "The access level required for the Discord API is not specified in the provided documentation."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 16873,
+        "outputTokens": 517
+      }
+    },
+    {
+      "id": 27,
+      "name": "Telegram",
+      "record": {
+        "oneLiner": "Telegram offers several APIs for developers to build applications and integrate with its messaging platform.",
+        "auth": [
+          "unknown"
+        ],
+        "access": "self_serve_free",
+        "apiSurface": "rest",
+        "apiBreadth": "broad",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "telegram",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 18,
+          "triggersCount": 0,
+          "authDisagreement": true
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The quoted text does not support a buildability verdict.",
+        "evidence": [
+          {
+            "url": "https://core.telegram.org/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:29.393Z",
+            "quote": "You are welcome to use both APIs free of charge."
+          },
+          {
+            "url": "https://core.telegram.org/api/url-authorization",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:16.647Z",
+            "quote": "Telegram allows websites to log in with Telegram using the OpenID Connect (OIDC) protocol, see here \n» for more info on how to use Telegram Login."
+          },
+          {
+            "url": "https://core.telegram.org/api/obtaining_api_id",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:29.775Z",
+            "quote": "We welcome all developers to use our API and source code to create Telegram-like messaging applications on our platform free of charge."
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T12:49:23.143Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe"
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 14850,
+        "outputTokens": 501
+      }
+    }
+  ]
+}

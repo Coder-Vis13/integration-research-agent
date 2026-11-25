@@ -1,0 +1,101 @@
+id,name,category,auth,access,apiSurface,mcp,buildability,confidence,wave,retrievalMode,composioSlug,firstEvidenceUrl
+1,Salesforce,CRM and Sales,oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,salesforce,https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+2,HubSpot,CRM and Sales,oauth2,self_serve_free,rest,none_found,build_now,high,wave_1,composio_search,hubspot,https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview
+3,Pipedrive,CRM and Sales,oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,pipedrive,https://pipedrive.readme.io/docs/core-api-concepts-authentication
+4,Attio,CRM and Sales,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,attio,https://docs.attio.com/docs/overview
+5,Twenty,CRM and Sales,oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,twenty,https://docs.twenty.com/developers/extend/api
+6,Podio,CRM and Sales,oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,podio,https://developers.podio.com/authentication
+7,Zoho CRM,CRM and Sales,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,composio_search,,
+8,Close,CRM and Sales,oauth2|api_key|basic,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,close,https://developer.close.com/api/overview
+9,Copper,CRM and Sales,oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,copper,https://developer.copper.com/introduction/authentication.html
+10,DealCloud,CRM and Sales,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+11,Zendesk,Support and Helpdesk,oauth2|basic,self_serve_trial,rest,none_found,build_now,high,wave_1,composio_search,zendesk,https://zendesk.com/
+12,Intercom,Support and Helpdesk,oauth2,self_serve_free,rest,none_found,build_now,high,wave_1,http_only,intercom,https://developers.intercom.com/
+13,Freshdesk,Support and Helpdesk,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,freshdesk,https://developers.freshdesk.com/api/
+14,Front,Support and Helpdesk,unknown,unknown,unknown,unknown,unknown,medium,unknown_no_docs,composio_search,front,https://dev.frontapp.com/docs/core-api-getting-started
+15,Pylon,Support and Helpdesk,unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,composio_search,,https://docs.usepylon.com/pylon-docs/developer/api/api-reference/accounts/activities
+16,LiveAgent,Support and Helpdesk,api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,,https://support.liveagent.com/741982-API-key
+17,Plain,Support and Helpdesk,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,plain,https://www.plain.com/docs/graphql/reporting
+18,Help Scout,Support and Helpdesk,oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,help_scout,https://developer.helpscout.com/mailbox-api/overview/authentication/
+19,Gorgias,Support and Helpdesk,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,gorgias,
+20,Gladly,Support and Helpdesk,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,composio_search,,
+21,Slack,Communications and Messaging,oauth2,self_serve_free,rest,official,build_now,high,unknown_docs_silent,http_only,slack,https://api.slack.com/
+22,Twilio,Communications and Messaging,unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,twilio,https://www.twilio.com/docs/usage/workbench
+23,Zoho Cliq,Communications and Messaging,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,composio_search,zoho_cliq,
+24,Lark (Larksuite),Communications and Messaging,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,,https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials
+25,Pumble,Communications and Messaging,api_key,self_serve_free,rest,none_found,build_now,high,unknown_docs_silent,http_only,pumble,https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/
+26,Discord,Communications and Messaging,oauth2,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,discord,https://discord.com/developers/docs/intro
+27,Telegram,Communications and Messaging,unknown,self_serve_free,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,telegram,https://core.telegram.org/
+28,WhatsApp Business,Communications and Messaging,oauth2,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,,https://developers.facebook.com/docs/whatsapp
+29,Aircall,Communications and Messaging,oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,aircall,https://developer.aircall.io/docs/public-vs-private-app
+30,Vonage,Communications and Messaging,api_key|basic,self_serve_free,rest,none_found,build_now,high,wave_1,http_only,,https://developer.vonage.com/
+31,Google Ads,"Marketing, Ads, Email and Social",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,googleads,
+32,Meta Ads,"Marketing, Ads, Email and Social",unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,metaads,https://developers.facebook.com/docs/marketing-apis
+33,LinkedIn Ads,"Marketing, Ads, Email and Social",unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,linkedin_ads,https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2026-06
+34,GoHighLevel,"Marketing, Ads, Email and Social",unknown,unknown,unknown,unknown,unknown,medium,unknown_no_docs,composio_search,,https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation
+35,Mailchimp,"Marketing, Ads, Email and Social",oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,mailchimp,https://mailchimp.com/developer/marketing/api-concepts
+36,Klaviyo,"Marketing, Ads, Email and Social",api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,klaviyo,https://developers.klaviyo.com/en/docs
+37,systeme.io,"Marketing, Ads, Email and Social",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+38,Pinterest,"Marketing, Ads, Email and Social",oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,pinterest,https://developers.pinterest.com/about-pinterest-mcp/
+39,Threads (Meta),"Marketing, Ads, Email and Social",oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,,https://developers.facebook.com/docs/threads
+40,SendGrid,"Marketing, Ads, Email and Social",unknown,self_serve_free,unknown,none_found,unknown,medium,unknown_docs_silent,composio_search,sendgrid,https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication
+41,Shopify,Ecommerce,oauth2,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,shopify,https://shopify.dev/docs/apps/launch/app-requirements-checklist
+42,WooCommerce,Ecommerce,api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,,https://woocommerce.com/document/woocommerce-rest-api
+43,BigCommerce,Ecommerce,unknown,self_serve_trial,rest,official,unknown,medium,unknown_docs_silent,http_only,bigcommerce,https://developer.bigcommerce.com/
+44,Salesforce Commerce Cloud,Ecommerce,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+45,Magento (Adobe Commerce),Ecommerce,oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,,https://developer.adobe.com/commerce/webapi/get-started/authentication/
+46,Squarespace,Ecommerce,oauth2|api_key,unknown,rest,official,unknown,medium,unknown_docs_silent,http_only,,https://developers.squarespace.com/
+47,Ecwid,Ecommerce,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+48,Gumroad,Ecommerce,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,composio_search,gumroad,https://gumroad.com/api
+49,Amazon Selling Partner,Ecommerce,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+50,fanbasis,Ecommerce,unknown,unknown,unknown,unknown,unknown,medium,unknown_no_docs,composio_search,,https://commasdocs.com/
+51,DataForSEO,"Data, SEO and Scraping",basic,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,dataforseo,https://docs.dataforseo.com/v3/auth/?bash
+52,SE Ranking,"Data, SEO and Scraping",unknown,paid_plan,rest,official,needs_outreach,medium,unknown_docs_silent,http_only,,https://seranking.com/api-pricing.html
+53,Ahrefs,"Data, SEO and Scraping",oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,ahrefs,https://ahrefs.com/api
+54,MrScraper,"Data, SEO and Scraping",unknown,unknown,cli_only,unknown,cli_or_skill_only,medium,not_buildable_cli_or_skill,http_only,mrscraper,https://docs.mrscraper.com/
+55,Apify,"Data, SEO and Scraping",unknown,self_serve_free,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,apify,https://docs.apify.com/
+56,Firecrawl,"Data, SEO and Scraping",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,firecrawl,
+57,Bright Data,"Data, SEO and Scraping",unknown,self_serve_free,rest,none_found,unknown,medium,unknown_docs_silent,http_only,brightdata,https://brightdata.com/products/serp-api
+58,Sherlock,"Data, SEO and Scraping",unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,,https://github.com/sherlock-project/sherlock
+59,Waterfall.io,"Data, SEO and Scraping",api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,,https://docs.waterfall.io/v1/introduction
+60,Clay,"Data, SEO and Scraping",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,clay,
+61,GitHub,"Developer, Infra and Data platforms",token,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,github,https://docs.github.com/rest
+62,Vercel,"Developer, Infra and Data platforms",unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,vercel,https://vercel.com/docs/rest-api
+63,Netlify,"Developer, Infra and Data platforms",oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,,https://www.netlify.com/blog/2016/10/10/integrating-with-netlify-oauth2/
+64,Cloudflare,"Developer, Infra and Data platforms",api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,cloudflare,https://developers.cloudflare.com/fundamentals/api/reference/limits/
+65,Supabase,"Developer, Infra and Data platforms",oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,supabase,https://supabase.com/docs
+66,Neo4j,"Developer, Infra and Data platforms",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,neo4j,
+67,Snowflake,"Developer, Infra and Data platforms",oauth2,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,snowflake,https://docs.snowflake.com/en/user-guide/authentication-policies
+68,MongoDB Atlas,"Developer, Infra and Data platforms",oauth2|api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,,https://mongodb.com/docs/atlas/configure-api-access/
+69,Datadog,"Developer, Infra and Data platforms",api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,datadog,https://docs.datadoghq.com/api/latest/authentication/
+70,Sentry,"Developer, Infra and Data platforms",oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,sentry,https://docs.sentry.io/api/auth/
+71,Notion,Productivity and Project Management,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,notion,
+72,Airtable,Productivity and Project Management,unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,airtable,https://airtable.com/developers/agents/mcp/getting-started
+73,Linear,Productivity and Project Management,oauth2|api_key,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,linear,https://developers.linear.app/
+74,Jira,Productivity and Project Management,oauth2,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,jira,https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-other-operations/
+75,Asana,Productivity and Project Management,oauth2|token,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,asana,https://developers.asana.com/
+76,Monday.com,Productivity and Project Management,oauth2,self_serve_free,graphql,official,build_now,high,wave_1,http_only,,https://developer.monday.com/
+77,ClickUp,Productivity and Project Management,oauth2|api_key,unknown,rest,official,unknown,medium,unknown_docs_silent,http_only,clickup,https://clickup.com/api
+78,Coda,Productivity and Project Management,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,coda,https://coda.io/developers
+79,Smartsheet,Productivity and Project Management,unknown,paid_plan,unknown,none_found,needs_outreach,medium,unknown_docs_silent,http_only,smartsheet,https://developers.smartsheet.com/api/smartsheet/introduction
+80,Harvest,Productivity and Project Management,unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,harvest,https://harvestapp.com/
+81,Stripe,Finance and Fintech,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,stripe,
+82,Plaid,Finance and Fintech,unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,plaid,https://plaid.com/docs/account/billing/
+83,Binance,Finance and Fintech,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+84,Paygent Connect,Finance and Fintech,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+85,iPayX,Finance and Fintech,unknown,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,,https://ipayx.ai/docs
+86,QuickBooks,Finance and Fintech,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+87,Xero,Finance and Fintech,oauth2,unknown,unknown,none_found,unknown,medium,unknown_docs_silent,http_only,xero,https://developer.xero.com/xero-developer-platform-commercial-terms
+88,Brex,Finance and Fintech,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,brex,https://developer.brex.com/guides/authentication/
+89,Ramp,Finance and Fintech,unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,ramp,https://docs.ramp.com/
+90,PitchBook,Finance and Fintech,unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+91,NotebookLM,"AI, Research and Media-native",api_key,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,notebook_lm,https://cloud.google.com/gemini
+92,Otter AI,"AI, Research and Media-native",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+93,Fathom,"AI, Research and Media-native",unknown,unknown,rest,none_found,unknown,medium,unknown_docs_silent,http_only,fathom,https://fathom.video/
+94,Consensus,"AI, Research and Media-native",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+95,Reducto,"AI, Research and Media-native",api_key,self_serve_free,unknown,none_found,build_now,medium,unknown_docs_silent,http_only,,https://reducto.ai/developers
+96,Devin,"AI, Research and Media-native",unknown,unknown,unknown,unknown,unknown,low,unknown_no_docs,http_only,,
+97,higgsfield,"AI, Research and Media-native",api_key,unknown,rest,official,unknown,medium,unknown_docs_silent,http_only,higgsfield,https://higgsfield.ai/higgsfield-api
+98,Mermaid CLI,"AI, Research and Media-native",unknown,unknown,cli_only,none_found,cli_or_skill_only,medium,not_buildable_cli_or_skill,http_only,,https://github.com/mermaid-js/mermaid-cli
+99,YouTube Transcript,"AI, Research and Media-native",api_key,self_serve_free,rest,official,build_now,high,wave_1,http_only,youtube_transcript,https://transcriptapi.com/docs/getting-started/
+100,Grain,"AI, Research and Media-native",unknown,self_serve_free,rest,official,unknown,medium,unknown_docs_silent,http_only,grain,https://grain.com/

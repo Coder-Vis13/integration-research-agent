@@ -1,0 +1,331 @@
+{
+  "catalog": "Live catalog loaded from cache.",
+  "apps": [
+    {
+      "id": 3,
+      "name": "Pipedrive",
+      "category": "CRM and Sales",
+      "record": {
+        "oneLiner": "Pipedrive is a web-based sales CRM designed to help small businesses manage leads, track sales activities, and close more deals.",
+        "auth": [
+          "unknown"
+        ],
+        "access": "self_serve_free",
+        "apiSurface": "rest",
+        "apiBreadth": "unknown",
+        "mcp": "official",
+        "mcpUrl": "https://pipedrive.com/integrations",
+        "composio": {
+          "slug": "pipedrive",
+          "authSchemes": [
+            "OAUTH2",
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 404,
+          "triggersCount": 3,
+          "authDisagreement": true
+        },
+        "webhooks": "yes",
+        "openApiSpecUrl": null,
+        "sandbox": "yes",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://developers.pipedrive.com/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:16.000Z",
+            "quote": "Easily build integrations with our API and developer platform to reach over 100,000 companies through the Pipedrive Marketplace"
+          },
+          {
+            "url": "https://developers.pipedrive.com/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:16.000Z",
+            "quote": "Create a test environment Sign up for a Sandbox Account today to begin experimenting and developing in a risk free environment"
+          },
+          {
+            "url": "https://developers.pipedrive.com/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:16.000Z",
+            "quote": "Pipedrive is an amazing tool! Their developer API, well-documented API reference page and easy use of webhooks allow developers to easily build solutions in the Pipedrive Developer Platform."
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T09:11:15.466Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke"
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 4244,
+        "outputTokens": 621
+      }
+    },
+    {
+      "id": 26,
+      "name": "Discord",
+      "category": "Communications and Messaging",
+      "record": {
+        "oneLiner": "Build bots and integrations on Discord, or connect your game with rich presence, voice chat, and more.",
+        "auth": [
+          "oauth2"
+        ],
+        "access": "unknown",
+        "apiSurface": "rest",
+        "apiBreadth": "unknown",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "discord",
+          "authSchemes": [
+            "OAUTH2"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 23,
+          "triggersCount": 1,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "yes",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://discord.com/developers/docs/intro",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:28.858Z",
+            "quote": "Build bots and integrations on Discord, or connect your game with rich presence, voice chat, and more."
+          },
+          {
+            "url": "https://discord.com/developers/docs/intro",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:28.858Z",
+            "quote": "OAuth2 & Permissions"
+          },
+          {
+            "url": "https://discord.com/developers/docs/intro",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:28.858Z",
+            "quote": "Webhooks"
+          },
+          {
+            "url": "https://discord.com/developers/docs/intro",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T08:32:28.858Z",
+            "quote": "Server and Channel Management"
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T09:11:15.466Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "The pages did not support access or API surface, and the model gave no reason."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 16605,
+        "outputTokens": 535
+      }
+    },
+    {
+      "id": 27,
+      "name": "Telegram",
+      "category": "Communications and Messaging",
+      "record": {
+        "oneLiner": "Telegram offers APIs for creating bots, custom clients, and sending verification codes.",
+        "auth": [
+          "oauth2",
+          "other"
+        ],
+        "access": "unknown",
+        "apiSurface": "rest",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "telegram",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 18,
+          "triggersCount": 0,
+          "authDisagreement": true
+        },
+        "webhooks": "yes",
+        "sandbox": "unknown",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://core.telegram.org/bots/api",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:17.270Z",
+            "quote": "The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram."
+          },
+          {
+            "url": "https://core.telegram.org/api/url-authorization",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:16.647Z",
+            "quote": "Telegram allows websites to log in with Telegram using the OpenID Connect (OIDC) protocol, see here » for more info on how to use Telegram Login. This section documents the flow used by Telegram clients in order to authorize an incoming OIDC (OAuth) request."
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T09:11:15.466Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "The pages did not support access or API surface, and the model gave no reason."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 16164,
+        "outputTokens": 416
+      }
+    },
+    {
+      "id": 25,
+      "name": "Pumble",
+      "category": "Communications and Messaging",
+      "record": {
+        "oneLiner": "Pumble is a free business communication tool for team communication, collaboration, and more.",
+        "auth": [
+          "api_key"
+        ],
+        "access": "self_serve_free",
+        "apiSurface": "rest",
+        "apiBreadth": "unknown",
+        "mcp": "unknown",
+        "composio": {
+          "slug": "pumble",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 9,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "free",
+        "rateLimit": "1000 requests per minute per user",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "By using the Pumble API addon, you can interact with Pumble’s API documentation without using any complex authentication processes. This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests."
+          },
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "The rate limit is up to 1000 requests per minute per user."
+          },
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "You’ll receive an ephemeral message containing the generated API key. This message is not visible to other users . Copy this key for future use."
+          },
+          {
+            "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:18.593Z",
+            "quote": "Available on all plans"
+          }
+        ],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T09:11:15.466Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke"
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 7770,
+        "outputTokens": 664
+      }
+    },
+    {
+      "id": 47,
+      "name": "Ecwid",
+      "category": "Ecommerce",
+      "record": {
+        "oneLiner": "Ecwid's REST API allows for the management of store data, payment and shipping methods, and storefront settings, utilizing OAuth 2.0 authorization with rate limits.",
+        "auth": [
+          "oauth2"
+        ],
+        "access": "unknown",
+        "apiSurface": "rest",
+        "apiBreadth": "unknown",
+        "mcp": "official",
+        "mcpUrl": "https://api-docs.ecwid.com/",
+        "composio": {
+          "slug": null,
+          "authSchemes": [],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 0,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "needs_app_review",
+        "blocker": "Requires app review for access.",
+        "evidence": [
+          {
+            "url": "https://docs.ecwid.com/build-apps/contact-ecwid-api-support-team",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:11:22.736Z",
+            "quote": "Get assistance with your app If you need to update restricted app settings or have a question about your app or our API, contact API Support team directly from the app page in Ecwid admin: Go to Apps > Custom Apps Open the app you need help with. Scroll down > Contact Support : Fill in the form > Submit button. That’s it! API support team will review and respond within 24 hours on business days."
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T09:11:15.466Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "Access details are not explicitly mentioned in the provided documentation."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 10126,
+        "outputTokens": 690
+      }
+    }
+  ]
+}

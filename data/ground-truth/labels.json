@@ -1,0 +1,5678 @@
+{
+  "provenance": {
+    "source": "clay_csv",
+    "sourceFile": "data/clay_sample.csv",
+    "verificationStatus": "not_independently_verified",
+    "note": "Clay-derived reference for scorer agreement checks. This is not independently verified ground truth. App 1 and app 10 in each of the 10 categories, plus eight apps the position rule misses: Sherlock, Waterfall.io, Paygent Connect, iPayX, Otter AI, Devin, higgsfield, and Mermaid CLI. Otter AI and Devin are included because the brief names them as MCP apps.",
+    "checkedAt": "2026-11-25",
+    "sampleSize": 28
+  },
+  "comparableMappings": [
+    {
+      "agentField": "oneLiner",
+      "clayColumn": "Use AI One Liner",
+      "scored": false
+    },
+    {
+      "agentField": "access",
+      "clayColumn": "Use AI Access",
+      "scored": true
+    },
+    {
+      "agentField": "apiSurface",
+      "clayColumn": "Use AI Api Surface",
+      "scored": true
+    },
+    {
+      "agentField": "apiBreadth",
+      "clayColumn": "Use AI Api Breadth",
+      "scored": false
+    },
+    {
+      "agentField": "mcp",
+      "clayColumn": "Use AI Mcp",
+      "scored": true
+    },
+    {
+      "agentField": "mcpUrl",
+      "clayColumn": "Use AI Mcp Url",
+      "scored": false
+    },
+    {
+      "agentField": "webhooks",
+      "clayColumn": "Use AI Webhooks",
+      "scored": false
+    },
+    {
+      "agentField": "openApiSpecUrl",
+      "clayColumn": "Use AI Open Api Spec Url",
+      "scored": false
+    },
+    {
+      "agentField": "sandbox",
+      "clayColumn": "Use AI Sandbox",
+      "scored": false
+    },
+    {
+      "agentField": "pricingForApi",
+      "clayColumn": "Use AI Pricing For Api",
+      "scored": false
+    },
+    {
+      "agentField": "rateLimit",
+      "clayColumn": "Use AI Rate Limit",
+      "scored": false
+    },
+    {
+      "agentField": "buildability",
+      "clayColumn": "Use AI Buildability",
+      "scored": true
+    },
+    {
+      "agentField": "blocker",
+      "clayColumn": "Use AI Blocker",
+      "scored": false
+    },
+    {
+      "agentField": "confidence",
+      "clayColumn": "Use AI Confidence",
+      "scored": false
+    },
+    {
+      "agentField": "unknownReason",
+      "clayColumn": "Use AI Unknown Reason",
+      "scored": false
+    },
+    {
+      "agentField": "auth",
+      "clayColumn": "Authentication Method",
+      "scored": true
+    }
+  ],
+  "notComparableColumns": [
+    "id",
+    "name",
+    "category",
+    "hint",
+    "hintUrl",
+    "hintNote",
+    "hintUrlAlt",
+    "inSample",
+    "API Documentation Access"
+  ],
+  "ambiguousColumns": [],
+  "apps": [
+    {
+      "id": 1,
+      "name": "Salesforce",
+      "clayRow": 2,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "1",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Salesforce",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "CRM and Sales",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "salesforce.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://salesforce.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Salesforce is the world's leading CRM platform that helps businesses manage sales, customer service, marketing, and more through cloud-based software and APIs.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "15,000 calls/day",
+          "state": "value"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Total API Requests (Calls) Per 24-Hour Period by Salesforce Edition: Developer Edition: 15,000 calls/day",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "DealCloud",
+      "clayRow": 3,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "10",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "DealCloud",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "CRM and Sales",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "api.docs.dealcloud.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://api.docs.dealcloud.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "DealCloud is a CRM and deal management platform with a REST API and MCP server for AI clients, authenticated via OAuth 2.0.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "admin_approval",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://api.docs.dealcloud.com/mcp/authentication",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_outreach",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "DealCloud is an enterprise CRM; API and MCP access likely requires account provisioning and admin approval, not self-serve signup.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Pricing, sandbox, webhooks, and rate limit details were not found on the pages visited.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://api.docs.dealcloud.com/mcp/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "AI clients connect using OAuth 2.0.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "clayRow": 4,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "11",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Zendesk",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Support and Helpdesk",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "zendesk.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://zendesk.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Zendesk is a customer service platform that provides ticketing, help desk, and support tools for businesses.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "paid",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "200 req/min (Team), 400 req/min (Professional), 700 req/min (Enterprise), 2500 req/min (Enterprise Plus)",
+          "state": "value"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developer.zendesk.com/api-reference/introduction/security-and-auth",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Existing customers using basic authentication or API tokens must migrate to OAuth access tokens.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "Gladly",
+      "clayRow": 5,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "20",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Gladly",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Support and Helpdesk",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "gladly.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://gladly.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Gladly is a customer support platform with a REST API using Basic authentication.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "paid_plan",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://developer.gladly.com/rest",
+          "state": "value"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "enterprise",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_outreach",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "Gladly is an enterprise product; API access likely requires a paid plan and sales contact.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Sandbox availability, webhook support, and exact pricing tier for API access were not stated on the pages visited.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"basic\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developer.gladly.com/rest",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Gladly's REST API uses Basic authentication.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "clayRow": 6,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "21",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Slack",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Communications and Messaging",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "slack.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://slack.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Slack is a cloud-based messaging and collaboration platform with a REST API using OAuth 2.0.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Rate limit and sandbox details were not found on the visited pages.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.slack.dev/authentication/",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "OAuth 2.0: Learn how to use OAuth 2.0 to securely authenticate users and request access tokens.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 30,
+      "name": "Vonage",
+      "clayRow": 7,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "30",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Vonage",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Communications and Messaging",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "developer.vonage.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://developer.vonage.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Vonage provides cloud communications APIs for voice, messaging, video, and authentication.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "trial",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Uses API Key and Secret via HTTP Basic Auth header",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "name": "Google Ads",
+      "clayRow": 8,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "31",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Google Ads",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Marketing, Ads, Email and Social",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "developers.google.com/google-ads",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://developers.google.com/google-ads",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Google Ads API is the programmatic interface to Google Ads for managing large or complex accounts and campaigns at scale.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_app_review",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "Standard access requires an application review that can take several business days or sometimes weeks; Basic access is reviewed automatically but still requires a developer token approval process.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "The Google Ads MCP server provides a standardized bridge to the Google Ads API.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 40,
+      "name": "SendGrid",
+      "clayRow": 9,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "40",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "SendGrid",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Marketing, Ads, Email and Social",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "sendgrid.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://sendgrid.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "SendGrid is a cloud-based email delivery and marketing platform that enables businesses to send transactional and marketing emails at scale via a REST API.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Rate limit and sandbox details were not present on the pages visited; pricing tier confirmed as having a free plan from sendgrid.com but exact API rate limits require a separate page.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "The Twilio SendGrid Web API v3 supports API keys, which add an additional layer of security to your account.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "clayRow": 10,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "41",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Shopify",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Ecommerce",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "shopify.dev",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://shopify.dev",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Shopify is an e-commerce platform that lets merchants build, run, and scale online stores, backed by a comprehensive suite of REST, GraphQL, and Storefront APIs for developers.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "both",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://shopify.dev/docs/api/shopify-mcp",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://shopify.dev/docs/api/usage/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Every authenticated Shopify API request requires an access token sent in a request header.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 50,
+      "name": "fanbasis",
+      "clayRow": 11,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "50",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "fanbasis",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Ecommerce",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "fanbasis.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://fanbasis.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Fanbasis is a creator monetization and payment platform with a REST API and MCP integration for managing checkouts, subscriptions, and fan data.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://fanbasis.com",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Auth confirmed as API key from integration page; MCP confirmed from fanbasis.com homepage mentioning MCP beta.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://www.tarvent.com/integrations/fanbasis",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Create an API key. To do this, go to Account > API Keys. Make sure to give access to the correct audiences.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 51,
+      "name": "DataForSEO",
+      "clayRow": 12,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "51",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "DataForSEO",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Data, SEO and Scraping",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "docs.dataforseo.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://docs.dataforseo.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "DataForSEO provides a comprehensive REST API for SEO and digital marketing data, including SERP results, keyword data, backlinks, and more.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://github.com/dataforseo/OpenApiDocumentation",
+          "state": "value"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"basic\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.dataforseo.com/v3/auth",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "DataForSEO uses Basic Authentication exclusively — it is the only way to access the API.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 60,
+      "name": "Clay",
+      "clayRow": 15,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "60",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Clay",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Data, SEO and Scraping",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "clay.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://clay.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Clay is a GTM data platform that lets users enrich leads and automate outreach workflows via a public REST API authenticated with API keys.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Pricing details for API access and webhook/sandbox availability were not explicitly mentioned on the pages visited.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developers.clay.com/quickstart",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Requests authenticate with a Clay API key in the `clay-api-key` header.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "clayRow": 16,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "61",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "GitHub",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Developer, Infra and Data platforms",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "docs.github.com/rest",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://docs.github.com/rest",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "GitHub is a platform for version control, code collaboration, and software development hosting, exposing a comprehensive REST (and GraphQL) API for programmatic access to repositories, issues, pull requests, users, and much more.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "both",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"token\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Fine-grained PATs (recommended) or classic PATs are supported.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 70,
+      "name": "Sentry",
+      "clayRow": 17,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "70",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Sentry",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Developer, Infra and Data platforms",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "docs.sentry.io/api",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://docs.sentry.io/api",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Sentry is an application monitoring platform that helps developers detect, triage, and resolve errors and performance issues in their software.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"token\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.sentry.io/api/auth",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "User Authentication Tokens (Personal Access Tokens) - Associated with user account (not integration)",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "clayRow": 18,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "71",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Notion",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Productivity and Project Management",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "developers.notion.com",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://developers.notion.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Notion is an all-in-one productivity and project management workspace for notes, databases, wikis, and task management, with a REST API for building integrations.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "no",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "180 requests per minute (an average of 3 per second)",
+          "state": "value"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"token\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developers.notion.com/guides/notion-api/quick-start",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "A personal access token (PAT) lets you authenticate API requests as yourself without setting up a connection or completing an OAuth flow.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 80,
+      "name": "Harvest",
+      "clayRow": 19,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "80",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Harvest",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Productivity and Project Management",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "harvestapp.com (help.getharvest.com/api-v2)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://harvestapp.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "help.getharvest.com/api-v2",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "https://help.getharvest.com/api-v2",
+          "state": "value"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Harvest is a time tracking and invoicing tool for teams and freelancers to log hours, manage projects, and send invoices.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "100 requests per 15 seconds",
+          "state": "value"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"unknown\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "The V2 API requires an access token to authenticate requests.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "clayRow": 20,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "81",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Stripe",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Finance and Fintech",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "stripe.com/docs/api",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://stripe.com/docs/api",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Stripe is a payments platform that lets businesses accept and manage online payments via a comprehensive REST API.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://stripe.com/docs/api",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "The Stripe API is organized around REST, our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 90,
+      "name": "PitchBook",
+      "clayRow": 23,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "90",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "PitchBook",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Finance and Fintech",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "pitchbook.com (research API)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://pitchbook.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "research API",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "PitchBook provides a RESTful API for accessing private-market data including companies, deals, and funds, requiring a sales contract and API key authentication.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "partner_or_sales",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "enterprise",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_outreach",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "API access requires a separate contract and sales engagement; no self-serve signup available.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Auth type (api_key) confirmed by Google search results referencing the Postman documentation, but the documentation page itself did not load with a direct quote containing \"api key\".",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://pitchbook.com/products/direct-access-data/api",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Our RESTful API utilizes JSON and is system agnostic, so you can integrate it into custom applications and CRMs to bring the industry's best data directly into your workflow.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 91,
+      "name": "NotebookLM",
+      "clayRow": 24,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "91",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "NotebookLM",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "AI, Research and Media-native",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "cloud.google.com/gemini (Enterprise API)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://cloud.google.com/gemini",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "Enterprise API",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "NotebookLM Enterprise API for programmatically creating and managing notebooks and sources via REST interface.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "paid_plan",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "enterprise",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_outreach",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "API is part of NotebookLM Enterprise (paid/enterprise tier), requiring a paid plan to access.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Rate limits, sandbox availability, and webhook support were not mentioned on the visited pages.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developers.google.com/notebook/docs",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Configure OAuth 2.0 access tokens and scopes for API requests.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 100,
+      "name": "Grain",
+      "clayRow": 29,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "100",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Grain",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "AI, Research and Media-native",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "grain.com (meeting notes)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://grain.com",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "meeting notes",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Grain is an AI meeting notes tool that records, transcribes, and summarizes meetings, with an API and MCP server for accessing transcripts and meeting history.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://grain.com",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Sandbox, rate limit, and pricing details not found on the pages visited.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"token\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://developers.grain.com/",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "A Personal Access Token (PAT) authenticates requests as you, with the same access you have in Grain. Generate one here: https://grain.com/app/settings/integrations?tab=api",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 58,
+      "name": "Sherlock",
+      "clayRow": 13,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "58",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Sherlock",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Data, SEO and Scraping",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "github.com/sherlock-project/sherlock",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://github.com/sherlock-project/sherlock",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Sherlock is an open-source OSINT command-line tool that hunts down social media accounts by username across 400+ social networks.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "cli_only",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "no",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "no",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "cli_or_skill_only",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "Sherlock is a CLI-only tool with no public REST or programmatic API.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "The page describes Sherlock exclusively as a CLI tool (Python/Docker); no REST, GraphQL, or programmatic API is documented, so access type is unknown beyond free/open-source self-install. Auth is unknown because no API authentication exists.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"unknown\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://github.com/sherlock-project/sherlock",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Hunt down social media accounts by username across 400+ social networks",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 59,
+      "name": "Waterfall.io",
+      "clayRow": 14,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "59",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Waterfall.io",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Data, SEO and Scraping",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "waterfall.io (contact/company intel)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://waterfall.io",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "contact/company intel",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Waterfall.io provides contact and company intelligence data via a REST API authenticated with API keys.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "paid_plan",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://docs.waterfall.io/waterfall-v1-1",
+          "state": "value"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "paid",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Rate limits and sandbox availability were not stated on any visited page.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://waterfall.io",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "'--header 'x-waterfall-api-key: YOURKEY'",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 84,
+      "name": "Paygent Connect",
+      "clayRow": 21,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "84",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Paygent Connect",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Finance and Fintech",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "paygent (NMI-powered)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "NMI-powered",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Paygent Connect is an NMI-powered payment gateway API for processing transactions and managing payment solutions.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "moderate",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://docs.nmi.com/reference/mcp",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "Access model and pricing details were not found on the visited pages.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.nmi.com/reference/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Authentication across our APIs is done via secure API keys.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 85,
+      "name": "iPayX",
+      "clayRow": 22,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "85",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "iPayX",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "Finance and Fintech",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "ipayx.ai/docs",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://ipayx.ai/docs",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "iPayX is an AI-powered FX audit platform that analyzes foreign exchange transactions for hidden costs, spread overcharges, and rate manipulation using deterministic scoring and live market data.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "narrow",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://ipayx.ai/docs/mcp-server",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "paid",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"api_key\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://ipayx.ai/developers",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Keys generated/managed in Dashboard; must never be exposed client-side",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "clayRow": 25,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "92",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Otter AI",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "AI, Research and Media-native",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "help.otter.ai (MCP server)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://help.otter.ai",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "MCP server",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Otter AI is an AI-powered meeting assistant that records, transcribes, and summarizes meetings, and exposes transcripts and meeting data via a public API and MCP server.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "paid_plan",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "narrow",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "yes",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "no",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "enterprise",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "10 requests/second",
+          "state": "value"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_outreach",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "Public API and MCP access require an Enterprise plan; API key creation requires Enterprise workspace and MCP requires contacting Otter Support for setup.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"oauth2\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "🔒 Security: All access is OAuth-authenticated with granular permissions.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 96,
+      "name": "Devin",
+      "clayRow": 26,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "96",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Devin",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "AI, Research and Media-native",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "docs.devin.ai (MCP)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://docs.devin.ai",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "MCP",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Devin is an AI software engineer that helps engineering teams tackle backlogs, offering a conversational UI with an embedded IDE, shell, and browser.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "self_serve_free",
+          "state": "value"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "rest",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "broad",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://docs.devin.ai/work-with-devin/devin-mcp",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "build_now",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "high",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"token\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://docs.devin.ai/api-reference/authentication",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "All API credentials use the `cog_` prefix format.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 97,
+      "name": "higgsfield",
+      "clayRow": 27,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "97",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "higgsfield",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "AI, Research and Media-native",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "higgsfield.ai/cli (content suite)",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://higgsfield.ai/cli",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "content suite",
+          "state": "value"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Higgsfield AI is a content suite offering CLI and MCP server access for AI-powered video and media creation.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "mcp_only",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "official",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "https://higgsfield.ai/cli",
+          "state": "value"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "needs_outreach",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "Authentication is done through a Higgsfield account with no API keys; access method and pricing for API/MCP use are not documented on the page.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "The page describes MCP server access authenticated via Higgsfield account but does not specify oauth, api key, basic auth, or token-based auth explicitly.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"other\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://higgsfield.ai/cli",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Add the Higgsfield MCP server URL in your agent's settings and authenticate through your Higgsfield account.",
+          "state": "value"
+        }
+      }
+    },
+    {
+      "id": 98,
+      "name": "Mermaid CLI",
+      "clayRow": 28,
+      "notComparable": {
+        "id": {
+          "clayColumn": "id",
+          "raw": "98",
+          "state": "value"
+        },
+        "name": {
+          "clayColumn": "name",
+          "raw": "Mermaid CLI",
+          "state": "value"
+        },
+        "category": {
+          "clayColumn": "category",
+          "raw": "AI, Research and Media-native",
+          "state": "value"
+        },
+        "hint": {
+          "clayColumn": "hint",
+          "raw": "github.com/mermaid-js/mermaid-cli",
+          "state": "value"
+        },
+        "hintUrl": {
+          "clayColumn": "hintUrl",
+          "raw": "https://github.com/mermaid-js/mermaid-cli",
+          "state": "value"
+        },
+        "hintNote": {
+          "clayColumn": "hintNote",
+          "raw": "",
+          "state": "blank"
+        },
+        "hintUrlAlt": {
+          "clayColumn": "hintUrlAlt",
+          "raw": "",
+          "state": "blank"
+        },
+        "inSample": {
+          "clayColumn": "inSample",
+          "raw": "yes",
+          "state": "value"
+        },
+        "API Documentation Access": {
+          "clayColumn": "API Documentation Access",
+          "raw": "Response",
+          "state": "value"
+        }
+      },
+      "fields": {
+        "oneLiner": {
+          "agentField": "oneLiner",
+          "clayColumn": "Use AI One Liner",
+          "comparable": true,
+          "scored": false,
+          "raw": "Mermaid CLI is a command-line tool that converts Mermaid diagram definition files into SVG, PNG, or PDF output files.",
+          "state": "value"
+        },
+        "access": {
+          "agentField": "access",
+          "clayColumn": "Use AI Access",
+          "comparable": true,
+          "scored": true,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "apiSurface": {
+          "agentField": "apiSurface",
+          "clayColumn": "Use AI Api Surface",
+          "comparable": true,
+          "scored": true,
+          "raw": "cli_only",
+          "state": "value"
+        },
+        "apiBreadth": {
+          "agentField": "apiBreadth",
+          "clayColumn": "Use AI Api Breadth",
+          "comparable": true,
+          "scored": false,
+          "raw": "narrow",
+          "state": "value"
+        },
+        "mcp": {
+          "agentField": "mcp",
+          "clayColumn": "Use AI Mcp",
+          "comparable": true,
+          "scored": true,
+          "raw": "none_found",
+          "state": "value"
+        },
+        "mcpUrl": {
+          "agentField": "mcpUrl",
+          "clayColumn": "Use AI Mcp Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "webhooks": {
+          "agentField": "webhooks",
+          "clayColumn": "Use AI Webhooks",
+          "comparable": true,
+          "scored": false,
+          "raw": "no",
+          "state": "value"
+        },
+        "openApiSpecUrl": {
+          "agentField": "openApiSpecUrl",
+          "clayColumn": "Use AI Open Api Spec Url",
+          "comparable": true,
+          "scored": false,
+          "raw": "",
+          "state": "blank"
+        },
+        "sandbox": {
+          "agentField": "sandbox",
+          "clayColumn": "Use AI Sandbox",
+          "comparable": true,
+          "scored": false,
+          "raw": "no",
+          "state": "value"
+        },
+        "pricingForApi": {
+          "agentField": "pricingForApi",
+          "clayColumn": "Use AI Pricing For Api",
+          "comparable": true,
+          "scored": false,
+          "raw": "free",
+          "state": "value"
+        },
+        "rateLimit": {
+          "agentField": "rateLimit",
+          "clayColumn": "Use AI Rate Limit",
+          "comparable": true,
+          "scored": false,
+          "raw": "unknown",
+          "state": "unknown"
+        },
+        "buildability": {
+          "agentField": "buildability",
+          "clayColumn": "Use AI Buildability",
+          "comparable": true,
+          "scored": true,
+          "raw": "cli_or_skill_only",
+          "state": "value"
+        },
+        "blocker": {
+          "agentField": "blocker",
+          "clayColumn": "Use AI Blocker",
+          "comparable": true,
+          "scored": false,
+          "raw": "Mermaid CLI is a local command-line tool with no REST/GraphQL API, no authentication, and no hosted service to integrate with programmatically.",
+          "state": "value"
+        },
+        "confidence": {
+          "agentField": "confidence",
+          "clayColumn": "Use AI Confidence",
+          "comparable": true,
+          "scored": false,
+          "raw": "medium",
+          "state": "value"
+        },
+        "unknownReason": {
+          "agentField": "unknownReason",
+          "clayColumn": "Use AI Unknown Reason",
+          "comparable": true,
+          "scored": false,
+          "raw": "The page describes a local CLI/Node.js library with no hosted API service, no authentication scheme, and no access tier — access is unknown because it is an open-source package installed locally rather than a web API.",
+          "state": "value"
+        },
+        "auth": {
+          "agentField": "auth",
+          "clayColumn": "Authentication Method",
+          "comparable": true,
+          "scored": true,
+          "raw": "[\"unknown\"]",
+          "state": "value"
+        }
+      },
+      "evidence": {
+        "url": {
+          "clayColumn": "Use AI Evidence Url",
+          "raw": "https://github.com/mermaid-js/mermaid-cli",
+          "state": "value"
+        },
+        "httpStatus": {
+          "clayColumn": "Use AI Evidence Http Status",
+          "raw": "200",
+          "state": "value"
+        },
+        "quote": {
+          "clayColumn": "Use AI Evidence Quote",
+          "raw": "Mermaid CLI (`mermaid-cli`) is a command-line interface (CLI) for the Mermaid library.",
+          "state": "value"
+        }
+      }
+    }
+  ]
+}

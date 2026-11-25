@@ -1,0 +1,91 @@
+{
+  "catalog": "Live catalog loaded from cache.",
+  "exa": [
+    {
+      "at": "2026-11-25T12:09:22.013Z",
+      "app": "Otter AI",
+      "slug": "EXA_SEARCH",
+      "cached": false,
+      "listedUsd": 0.007,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    },
+    {
+      "at": "2026-11-25T12:09:22.771Z",
+      "app": "Otter AI",
+      "slug": "EXA_GET_CONTENTS_ACTION",
+      "cached": false,
+      "listedUsd": 0.003,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    }
+  ],
+  "apps": [
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "record": {
+        "oneLiner": "Otter.ai's Public API provides programmatic access to retrieve channels, conversations, transcripts, audio, action items, insights, outlines, and workspace details from your Otter account.",
+        "auth": [
+          "unknown"
+        ],
+        "access": "paid_plan",
+        "apiSurface": "rest",
+        "apiBreadth": "moderate",
+        "mcp": "official",
+        "composio": {
+          "slug": null,
+          "authSchemes": [],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 0,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "no",
+        "pricingForApi": "enterprise",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The API is available for all Enterprise workspaces. If you do not see this feature for your workspace, contact your Otter account manager.",
+        "evidence": [
+          {
+            "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:09:22.771Z",
+            "quote": "Otter.ai’s Public API provides programmatic access to retrieve channels, conversations, transcripts, audio, action items, insights, outlines, and workspace details from your Otter account.\n\n Getting Started: Otter's Public API is available for all Enterprise workspaces. If you do not see this feature for your workspace, contact your Otter account manager."
+          },
+          {
+            "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:09:22.771Z",
+            "quote": "All API requests require authentication using Bearer token authentication. Follow the steps below to create your API key."
+          }
+        ],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T12:09:21.295Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe"
+      },
+      "retrieval": {
+        "mode": "composio_search",
+        "sentence": "Composio search used EXA_SEARCH, then EXA_GET_CONTENTS_ACTION.",
+        "searchSlug": "EXA_SEARCH"
+      },
+      "usage": {
+        "inputTokens": 7387,
+        "outputTokens": 687
+      }
+    }
+  ]
+}

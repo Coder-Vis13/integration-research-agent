@@ -1,0 +1,214 @@
+{
+  "catalog": "Live catalog loaded from cache.",
+  "exa": [
+    {
+      "at": "2026-11-25T16:41:51.247Z",
+      "app": "HubSpot",
+      "slug": "EXA_SEARCH",
+      "cached": true,
+      "listedUsd": 0,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    },
+    {
+      "at": "2026-11-25T16:41:51.247Z",
+      "app": "HubSpot",
+      "slug": "EXA_GET_CONTENTS_ACTION",
+      "cached": true,
+      "listedUsd": 0,
+      "discountPercent": 100,
+      "instantCharge": {
+        "amount": "0.000000",
+        "currency": "USD",
+        "charged_by": "composio"
+      },
+      "costDollars": null
+    }
+  ],
+  "apps": [
+    {
+      "id": 2,
+      "name": "HubSpot",
+      "record": {
+        "oneLiner": "HubSpot offers a comprehensive platform for marketing, sales, and customer service software.",
+        "auth": [
+          "oauth2",
+          "api_key"
+        ],
+        "access": "self_serve_free",
+        "apiSurface": "rest",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "hubspot",
+          "authSchemes": [
+            "OAUTH2",
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 354,
+          "triggersCount": 2,
+          "authDisagreement": false
+        },
+        "webhooks": "yes",
+        "sandbox": "yes",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "build_now",
+        "blocker": "",
+        "evidence": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:26.707Z",
+            "quote": "If you plan to distribute your app to multiple accounts (either through listing on the HubSpot Marketplace or by managing specific authorized accounts), your app must be built using OAuth authentication."
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:26.707Z",
+            "quote": "Developer API keys Some app features and settings require a developer API key, which is available in the developer overview of your HubSpot account."
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/cms/start-building/introduction/overview",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:49:23.393Z",
+            "quote": "Create a free developer account , then create a test account within it."
+          }
+        ],
+        "confidence": "high",
+        "checkedAt": "2026-11-25T16:41:51.144Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe"
+      },
+      "retrieval": {
+        "mode": "composio_search",
+        "sentence": "Composio search used EXA_SEARCH, then EXA_GET_CONTENTS_ACTION.",
+        "searchSlug": "EXA_SEARCH"
+      },
+      "usage": {
+        "inputTokens": 24219,
+        "outputTokens": 639
+      }
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "record": {
+        "oneLiner": "Stripe provides a unified set of REST APIs for payments, billing, payouts, and financial workflows.",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "apiBreadth": "unknown",
+        "mcp": "unknown",
+        "composio": {
+          "slug": "stripe",
+          "authSchemes": [
+            "API_KEY",
+            "OAUTH2"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 428,
+          "triggersCount": 40,
+          "authDisagreement": true
+        },
+        "webhooks": "unknown",
+        "sandbox": "yes",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The access level for the Stripe API is not specified in the provided documentation.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T16:41:51.144Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "The pages did not support access or API surface, and the model gave no reason."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 17789,
+        "outputTokens": 448
+      }
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "record": {
+        "oneLiner": "Slack is a platform for communication and collaboration that allows teams to work together.",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "apiBreadth": "unknown",
+        "mcp": "official",
+        "mcpUrl": "https://mcp.slack.com/mcp",
+        "composio": {
+          "slug": "slack",
+          "authSchemes": [
+            "OAUTH2"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 165,
+          "triggersCount": 9,
+          "authDisagreement": true
+        },
+        "webhooks": "yes",
+        "openApiSpecUrl": null,
+        "sandbox": "yes",
+        "pricingForApi": "free",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The vendor requires an app review before it can be built.",
+        "evidence": [
+          {
+            "url": "https://api.slack.com/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:22:36.291Z",
+            "quote": "MCP connections go through the standard Slack app approval process, s"
+          },
+          {
+            "url": "https://api.slack.com/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T09:22:36.291Z",
+            "quote": "Some AI features need a paid plan; a free Developer Program sandbox has them."
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T16:41:51.144Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "Access level is not specified."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 13017,
+        "outputTokens": 417
+      }
+    }
+  ]
+}

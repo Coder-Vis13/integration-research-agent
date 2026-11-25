@@ -1,0 +1,109 @@
+Estimate before the paid pass1 calls.
+Apps: 100.
+Input tokens, counted as characters divided by 4: 1009282.
+Assumed output tokens: 80000 (800 per app).
+Listed OpenRouter price for google/gemini-2.5-flash-lite: $0.1 per million input tokens and $0.4 per million output tokens.
+Estimated listed charge: $0.1329. This is not a measured cost.
+Composio search is not called. The catalog is the saved copy.
+Catalog: Live catalog loaded from cache.
+Salesforce: auth unknown access unknown surface rest mcp unknown buildability unknown confidence low tokens 4902/352
+HubSpot: auth unknown access unknown surface rest mcp none_found buildability build_now confidence medium tokens 4417/375
+Pipedrive: auth unknown access unknown surface rest mcp official buildability build_now confidence medium tokens 4244/458
+Attio: auth api_key|oauth2 access self_serve_free surface rest mcp official buildability build_now confidence high tokens 8893/704
+Twenty: no usable page. No fetched page had enough text to quote.
+Podio: auth unknown access unknown surface rest mcp none_found buildability unknown confidence low tokens 1859/291
+Zoho CRM: auth unknown access self_serve_free surface rest mcp none_found buildability build_now confidence medium tokens 1683/318
+Close: auth api_key|oauth2 access unknown surface rest mcp official buildability build_now confidence medium tokens 20158/738
+Copper: auth oauth2 access unknown surface rest mcp none_found buildability build_now confidence medium tokens 10161/610
+DealCloud: auth oauth2|api_key access unknown surface rest mcp official buildability build_now confidence medium tokens 16261/534
+Zendesk: auth unknown access unknown surface rest mcp none_found buildability unknown confidence low tokens 5450/313
+Intercom: auth unknown access self_serve_trial surface rest mcp unknown buildability build_now confidence medium tokens 3197/337
+Freshdesk: auth unknown access unknown surface unknown mcp official buildability unknown confidence low tokens 1457/323
+Front: auth unknown access unknown surface rest mcp none_found buildability unknown confidence medium tokens 4365/344
+Pylon: auth unknown access unknown surface cli_only mcp official buildability build_now confidence low tokens 12795/1083
+LiveAgent: auth unknown access self_serve_trial surface unknown mcp none_found buildability unknown confidence low tokens 1388/617
+Plain: auth unknown access self_serve_free surface rest mcp unknown buildability build_now confidence low tokens 15728/667
+Help Scout: auth unknown access unknown surface rest mcp none_found buildability needs_outreach confidence medium tokens 2837/568
+Gorgias: auth unknown access unknown surface rest mcp none_found buildability build_now confidence medium tokens 2501/274
+Gladly: auth unknown access unknown surface rest mcp none_found buildability unknown confidence medium tokens 2585/326
+Slack: auth oauth2 access unknown surface rest mcp official buildability build_now confidence medium tokens 14431/393
+Twilio: auth unknown access unknown surface rest mcp none_found buildability unknown confidence medium tokens 23828/355
+Zoho Cliq: auth unknown access self_serve_free surface rest mcp none_found buildability build_now confidence medium tokens 1479/292
+Lark (Larksuite): no usable page. No fetched page had enough text to quote.
+Pumble: auth api_key access self_serve_free surface rest mcp official buildability build_now confidence high tokens 7770/356
+Discord: auth oauth2 access unknown surface rest mcp none_found buildability needs_outreach confidence medium tokens 16605/616
+Telegram: auth oauth2|other access unknown surface rest mcp none_found buildability build_now confidence medium tokens 16164/688
+WhatsApp Business: auth oauth2 access unknown surface rest mcp none_found buildability build_now confidence medium tokens 26148/9070
+Aircall: auth oauth2|basic access unknown surface rest mcp official buildability build_now confidence medium tokens 11987/1068
+Vonage: auth unknown access unknown surface rest mcp none_found buildability build_now confidence low tokens 9179/296
+Google Ads: no usable page. fetch failed
+Meta Ads: auth oauth2 access unknown surface rest mcp unknown buildability needs_outreach confidence medium tokens 7625/1113
+LinkedIn Ads: auth unknown access unknown surface rest mcp none_found buildability needs_outreach confidence low tokens 2967/461
+GoHighLevel: no usable page. No fetched page had enough text to quote.
+Mailchimp: auth oauth2|api_key access unknown surface rest mcp official buildability build_now confidence medium tokens 17178/994
+Klaviyo: auth api_key|oauth2 access unknown surface rest mcp official buildability build_now confidence low tokens 13046/606
+systeme.io: no usable page. No fetched page had enough text to quote.
+Pinterest: auth oauth2 access unknown surface rest mcp official buildability build_now confidence medium tokens 5581/557
+Threads (Meta): auth unknown access unknown surface rest mcp unknown buildability unknown confidence low tokens 3458/284
+SendGrid: auth unknown access unknown surface rest mcp none_found buildability build_now confidence low tokens 25500/263
+Shopify: auth oauth2 access unknown surface rest mcp unknown buildability build_now confidence low tokens 17403/399
+WooCommerce: auth api_key access unknown surface rest mcp none_found buildability needs_app_review confidence medium tokens 15210/291
+BigCommerce: auth oauth2 access unknown surface rest mcp official buildability build_now confidence medium tokens 14443/575
+Salesforce Commerce Cloud: auth oauth2 access unknown surface cli_only mcp community buildability build_now confidence medium tokens 7213/914
+Magento (Adobe Commerce): auth unknown access unknown surface rest mcp none_found buildability build_now confidence medium tokens 5169/296
+Squarespace: auth oauth2|api_key access unknown surface rest mcp official buildability build_now confidence medium tokens 14194/888
+Ecwid: auth oauth2 access unknown surface rest mcp official buildability unknown confidence medium tokens 10126/888
+Gumroad: no usable page. No fetched page had enough text to quote.
+Amazon Selling Partner: auth oauth2 access unknown surface rest mcp none_found buildability build_now confidence medium tokens 10656/347
+fanbasis: auth unknown access unknown surface rest mcp official buildability unknown confidence medium tokens 1993/355
+DataForSEO: auth basic access unknown surface rest mcp unknown buildability unknown confidence low tokens 14133/574
+SE Ranking: auth api_key access paid_plan surface rest mcp official buildability build_now confidence high tokens 20734/440
+Ahrefs: auth api_key|oauth2 access unknown surface rest mcp official buildability unknown confidence medium tokens 4956/719
+MrScraper: auth unknown access unknown surface cli_only mcp unknown buildability build_now confidence low tokens 16783/522
+Apify: auth unknown access unknown surface cli_only mcp official buildability unknown confidence low tokens 1292/417
+Firecrawl: auth api_key|oauth2 access self_serve_free surface rest mcp official buildability build_now confidence high tokens 22613/848
+Bright Data: auth unknown access unknown surface rest mcp official buildability build_now confidence medium tokens 13350/951
+Sherlock: auth unknown access unknown surface unknown mcp none_found buildability unknown confidence low tokens 15940/296
+Waterfall.io: no usable page. No fetched page had enough text to quote.
+Clay: auth unknown access self_serve_trial surface cli_only mcp official buildability build_now confidence medium tokens 3142/330
+GitHub: auth oauth2|token access unknown surface rest mcp unknown buildability build_now confidence low tokens 14152/537
+Vercel: auth unknown access unknown surface rest mcp unknown buildability build_now confidence low tokens 20483/709
+Netlify: auth oauth2 access unknown surface rest mcp unknown buildability build_now confidence low tokens 15628/641
+Cloudflare: auth oauth2|api_key access unknown surface rest mcp unknown buildability build_now confidence low tokens 16458/548
+Supabase: auth api_key|oauth2 access self_serve_free surface rest mcp unknown buildability build_now confidence low tokens 15523/813
+Neo4j: auth oauth2|basic|other access unknown surface rest mcp official buildability unknown confidence medium tokens 19320/3717
+Snowflake: auth unknown access unknown surface rest mcp none_found buildability build_now confidence medium tokens 6497/484
+MongoDB Atlas: auth unknown access unknown surface rest mcp none_found buildability unknown confidence medium tokens 21378/326
+Datadog: auth api_key access unknown surface rest mcp unknown buildability build_now confidence low tokens 24972/392
+Sentry: auth oauth2 access unknown surface cli_only mcp none_found buildability unknown confidence medium tokens 16108/522
+Notion: auth oauth2|api_key access unknown surface rest mcp official buildability build_now confidence medium tokens 31544/568
+Airtable: auth oauth2|token access unknown surface rest mcp official buildability build_now confidence medium tokens 6087/562
+Linear: auth oauth2|api_key access unknown surface graphql mcp none_found buildability unknown confidence medium tokens 3413/287
+Jira: auth oauth2|api_key access unknown surface rest mcp unknown buildability build_now confidence medium tokens 13202/754
+Asana: auth oauth2|token access unknown surface rest mcp unknown buildability build_now confidence medium tokens 14149/969
+Monday.com: auth oauth2|api_key access unknown surface graphql mcp official buildability build_now confidence medium tokens 5714/559
+ClickUp: auth oauth2 access unknown surface rest mcp official buildability unknown confidence medium tokens 4538/366
+Coda: auth oauth2 access unknown surface rest mcp official buildability build_now confidence medium tokens 9642/715
+Smartsheet: auth unknown access paid_plan surface rest mcp official buildability build_now confidence low tokens 11505/1000
+Harvest: no usable page. No fetched page had enough text to quote.
+Stripe: auth api_key access unknown surface rest mcp none_found buildability build_now confidence medium tokens 18897/601
+Plaid: auth oauth2 access partner_or_sales surface rest mcp official buildability build_now confidence high tokens 17816/313
+Binance: no usable page. No fetched page had enough text to quote.
+Paygent Connect: no usable page. No fetched page had enough text to quote.
+iPayX: auth unknown access unknown surface unknown mcp none_found buildability unknown confidence low tokens 737/352
+QuickBooks: no usable page. No fetched page had enough text to quote.
+Xero: auth oauth2 access self_serve_free surface rest mcp official buildability build_now confidence high tokens 4514/713
+Brex: auth oauth2|api_key access unknown surface rest mcp official buildability build_now confidence medium tokens 5452/894
+Ramp: auth unknown access unknown surface rest mcp none_found buildability unknown confidence low tokens 876/351
+PitchBook: no usable page. No fetched page had enough text to quote.
+NotebookLM: no usable page. No fetched page had enough text to quote.
+Otter AI: no usable page. No fetched page had enough text to quote.
+Fathom: auth unknown access self_serve_free surface rest mcp official buildability needs_outreach confidence medium tokens 2452/344
+Consensus: no usable page. No fetched page had enough text to quote.
+Reducto: no usable page. No fetched page had enough text to quote.
+Devin: no usable page. No fetched page had enough text to quote.
+higgsfield: no usable page. No fetched page had enough text to quote.
+Mermaid CLI: auth unknown access unknown surface unknown mcp none_found buildability build_now confidence low tokens 15991/304
+YouTube Transcript: auth api_key|oauth2 access self_serve_free surface rest mcp official buildability build_now confidence high tokens 24341/1145
+Grain: no usable page. No fetched page had enough text to quote.
+Measured tokens: 898566 input, 56180 output. The provider response did not include a dollar cost.

@@ -1,0 +1,33 @@
+{
+  "selectionRule": "App 1 and app 10 in each of the 10 categories, plus eight apps the position rule misses: Sherlock, Waterfall.io, Paygent Connect, iPayX, Otter AI, Devin, higgsfield, and Mermaid CLI. Otter AI and Devin are included because the brief names them as MCP apps.",
+  "apps": [
+    {"id": 1, "name": "Salesforce"},
+    {"id": 10, "name": "DealCloud"},
+    {"id": 11, "name": "Zendesk"},
+    {"id": 20, "name": "Gladly"},
+    {"id": 21, "name": "Slack"},
+    {"id": 30, "name": "Vonage"},
+    {"id": 31, "name": "Google Ads"},
+    {"id": 40, "name": "SendGrid"},
+    {"id": 41, "name": "Shopify"},
+    {"id": 50, "name": "fanbasis"},
+    {"id": 51, "name": "DataForSEO"},
+    {"id": 60, "name": "Clay"},
+    {"id": 61, "name": "GitHub"},
+    {"id": 70, "name": "Sentry"},
+    {"id": 71, "name": "Notion"},
+    {"id": 80, "name": "Harvest"},
+    {"id": 81, "name": "Stripe"},
+    {"id": 90, "name": "PitchBook"},
+    {"id": 91, "name": "NotebookLM"},
+    {"id": 100, "name": "Grain"},
+    {"id": 58, "name": "Sherlock"},
+    {"id": 59, "name": "Waterfall.io"},
+    {"id": 84, "name": "Paygent Connect"},
+    {"id": 85, "name": "iPayX"},
+    {"id": 92, "name": "Otter AI"},
+    {"id": 96, "name": "Devin"},
+    {"id": 97, "name": "higgsfield"},
+    {"id": 98, "name": "Mermaid CLI"}
+  ]
+}

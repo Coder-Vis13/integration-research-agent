@@ -1,0 +1,12 @@
+Estimate before the paid smoke calls.
+Input tokens, counted as characters divided by 4: 60058.
+Assumed output tokens: 4000 (800 per app).
+Listed OpenRouter price for google/gemini-2.5-flash-lite: $0.1 per million input tokens and $0.4 per million output tokens.
+Estimated listed charge: $0.0076. This is not a measured cost.
+Catalog: Live catalog loaded from cache.
+Pipedrive: auth unknown access self_serve_free surface rest mcp official buildability build_now confidence medium tokens 4244/621
+Discord: auth oauth2 access unknown surface rest mcp none_found buildability build_now confidence medium tokens 16605/535
+Telegram: auth oauth2|other access unknown surface rest mcp none_found buildability build_now confidence medium tokens 16164/416
+Pumble: auth api_key access self_serve_free surface rest mcp unknown buildability build_now confidence low tokens 7770/664
+Ecwid: auth oauth2 access unknown surface rest mcp official buildability needs_app_review confidence medium tokens 10126/690
+Measured tokens: 54909 input, 2926 output. The provider response did not include a dollar cost.

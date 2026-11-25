@@ -1,0 +1,59 @@
+{
+  "phase": 3,
+  "startedAt": "2026-11-25T16:42:59.949Z",
+  "finishedAt": "2026-11-25T16:59:02.853Z",
+  "durationMs": 962904,
+  "gitRevision": "e9359c4",
+  "command": "COST_OK=yes EXA_MAX_APPS=20 npm run pass2",
+  "entrypoint": "tsx src/cli/pass1.ts --pass2",
+  "notUsedForFullRun": "npm run research (stub: no gather, phase1-stub-v1 prompt)",
+  "llmProvider": "openai-compatible",
+  "llmModel": "google/gemini-2.5-flash-lite",
+  "llmBaseUrlHost": "openrouter.ai",
+  "promptVersion": "smoke-v4",
+  "passId": "pass2",
+  "cachePolicy": {
+    "fetch": "Reuse data/cache/fetch keyed by URL SHA-256; no cache clear before run",
+    "llm": "Reuse data/cache/llm when provider+model+promptVersion+passId+evidenceHash match; pass2 passId forces new completions vs Pass 1",
+    "catalog": "data/cache/catalog",
+    "exa": "data/cache/exa for Composio EXA_SEARCH and EXA_GET_CONTENTS_ACTION"
+  },
+  "exaMaxApps": 20,
+  "estimatedListedUsd": 0.1698,
+  "measuredTokens": {
+    "input": 1251271,
+    "output": 62108
+  },
+  "providerDollarCost": null,
+  "appsExpected": 100,
+  "appsWritten": 100,
+  "uniqueIds": 100,
+  "retrievalModes": {
+    "http_only": 80,
+    "composio_search": 20
+  },
+  "failures": {
+    "modelCallFailed": [
+      {
+        "name": "DealCloud",
+        "reason": "503 Provider returned error"
+      }
+    ],
+    "noUsablePage": [
+      "Binance",
+      "Paygent Connect",
+      "QuickBooks",
+      "PitchBook",
+      "Otter AI",
+      "Consensus"
+    ],
+    "fetchFailed": [
+      "Paygent Connect"
+    ]
+  },
+  "preservedArtifacts": [
+    "data/runs/pass1/records.json",
+    "data/clay_sample.csv",
+    "data/ground-truth/labels.json"
+  ]
+}

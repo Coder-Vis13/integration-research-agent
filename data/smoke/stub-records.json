@@ -1,0 +1,236 @@
+{
+  "catalog": "Live catalog loaded from cache.",
+  "apps": [
+    {
+      "id": 3,
+      "name": "Pipedrive",
+      "category": "CRM and Sales",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "unknown",
+        "composio": {
+          "slug": "pipedrive",
+          "authSchemes": [
+            "OAUTH2",
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 404,
+          "triggersCount": 3,
+          "authDisagreement": true
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "Stub mode does not research the app.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T09:11:26.587Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "Stub mode does not fetch or read docs."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": 26,
+      "name": "Discord",
+      "category": "Communications and Messaging",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "discord",
+          "authSchemes": [
+            "OAUTH2"
+          ],
+          "composioManagedAuthSchemes": [
+            "OAUTH2"
+          ],
+          "noAuth": false,
+          "toolsCount": 23,
+          "triggersCount": 1,
+          "authDisagreement": true
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "Stub mode does not research the app.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T09:11:26.591Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "Stub mode does not fetch or read docs."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": 27,
+      "name": "Telegram",
+      "category": "Communications and Messaging",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "none_found",
+        "composio": {
+          "slug": "telegram",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 18,
+          "triggersCount": 0,
+          "authDisagreement": true
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "Stub mode does not research the app.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T09:11:26.597Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "Stub mode does not fetch or read docs."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": 25,
+      "name": "Pumble",
+      "category": "Communications and Messaging",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "unknown",
+        "composio": {
+          "slug": "pumble",
+          "authSchemes": [
+            "API_KEY"
+          ],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 9,
+          "triggersCount": 0,
+          "authDisagreement": true
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "Stub mode does not research the app.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T09:11:26.599Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "Stub mode does not fetch or read docs."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": 47,
+      "name": "Ecwid",
+      "category": "Ecommerce",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "unknown",
+        "composio": {
+          "slug": null,
+          "authSchemes": [],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 0,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "Stub mode does not research the app.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T09:11:26.600Z",
+        "promptVersion": "smoke-v3",
+        "passId": "smoke",
+        "unknownReason": "Stub mode does not fetch or read docs."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    }
+  ]
+}

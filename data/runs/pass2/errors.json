@@ -1,0 +1,93 @@
+{
+  "metricLabel": "agreement_with_clay",
+  "mismatches": [
+    {
+      "appId": 11,
+      "appName": "Zendesk",
+      "field": "auth",
+      "agentValue": "basic|oauth2",
+      "clayValue": "oauth2",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 11,
+      "appName": "Zendesk",
+      "field": "access",
+      "agentValue": "self_serve_trial",
+      "clayValue": "self_serve_free",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 21,
+      "appName": "Slack",
+      "field": "mcp",
+      "agentValue": "official",
+      "clayValue": "none_found",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 30,
+      "appName": "Vonage",
+      "field": "auth",
+      "agentValue": "api_key|basic",
+      "clayValue": "api_key",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 41,
+      "appName": "Shopify",
+      "field": "mcp",
+      "agentValue": "none_found",
+      "clayValue": "official",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 61,
+      "appName": "GitHub",
+      "field": "apiSurface",
+      "agentValue": "rest",
+      "clayValue": "both",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 70,
+      "appName": "Sentry",
+      "field": "auth",
+      "agentValue": "oauth2",
+      "clayValue": "token",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 91,
+      "appName": "NotebookLM",
+      "field": "auth",
+      "agentValue": "api_key",
+      "clayValue": "oauth2",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 85,
+      "appName": "iPayX",
+      "field": "mcp",
+      "agentValue": "none_found",
+      "clayValue": "official",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 97,
+      "appName": "higgsfield",
+      "field": "auth",
+      "agentValue": "api_key",
+      "clayValue": "other",
+      "errorType": "mismatch"
+    },
+    {
+      "appId": 97,
+      "appName": "higgsfield",
+      "field": "apiSurface",
+      "agentValue": "rest",
+      "clayValue": "mcp_only",
+      "errorType": "mismatch"
+    }
+  ]
+}

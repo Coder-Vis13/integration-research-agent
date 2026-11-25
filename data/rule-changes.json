@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2026-11-25",
+    "rule": "If a model record has access or apiSurface set to unknown and no unknownReason, the client fills unknownReason before schema parsing.",
+    "motivatingApp": "Discord and Ecwid",
+    "why": "The schema rejects that record for every app. Dropping the call would hide the rest of the extraction."
+  },
+  {
+    "date": "2026-11-25",
+    "rule": "A build_now value with a blocker is stored as buildability unknown, and the blocker is kept. Any other buildability with an empty blocker gets a blocker sentence before schema parsing.",
+    "motivatingApp": "Telegram and Ecwid",
+    "why": "The schema cannot store those two combinations. The same contradiction can happen for any app."
+  },
+  {
+    "date": "2026-11-25",
+    "rule": "buildability no_public_api is kept only when the saved text says there is no public API. Otherwise it becomes unknown.",
+    "motivatingApp": "Pumble",
+    "why": "The same phrase check already applies to access no_public_api. A page that describes a product can be self-serve and still not be proof that no API exists."
+  },
+  {
+    "date": "2026-11-25",
+    "rule": "confidence high becomes medium when a quote remains and any of auth, access, apiSurface, mcp, or buildability is unknown. High with no quote stays low.",
+    "motivatingApp": "Ecwid",
+    "why": "The plan says high needs a supported claim. A quote about one field does not make an unknown field sure. The same gap can happen for any app."
+  },
+  {
+    "date": "2026-11-25",
+    "rule": "build_now is kept only when access is self_serve_free or self_serve_trial and auth is not unknown. Otherwise buildability becomes unknown and a blocker sentence is kept.",
+    "motivatingApp": "HubSpot, Pipedrive, and SendGrid",
+    "why": "The rubric says build_now means a public API and credentials with no review. An unknown access field does not show that. The same pair can happen for any app."
+  },
+  {
+    "date": "2026-11-25",
+    "rule": "A blank unknownReason is removed before schema parsing. If access or apiSurface is unknown, the client then fills a reason.",
+    "motivatingApp": "Twenty",
+    "why": "The schema rejects an empty string for every app. The rest of the extraction would be dropped."
+  }
+]

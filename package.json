@@ -4,7 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "tsx --test src/schema/appRecord.test.ts src/assignWave.test.ts src/rubric.test.ts src/appsList.test.ts src/sampleList.test.ts src/llm/client.test.ts src/verify/verifyRecord.test.ts src/clay/loadClaySample.test.ts src/clay/exportClayLabels.test.ts src/score/score.test.ts src/report/report.test.ts",
+    "research": "tsx src/cli/research.ts",
+    "pass1": "tsx src/cli/pass1.ts",
+    "pass2": "tsx src/cli/pass1.ts --pass2",
+    "probe": "tsx src/cli/probe.ts",
+    "clay-labels": "tsx src/cli/exportClayLabels.ts",
+    "score": "tsx src/cli/score.ts",
+    "report": "tsx src/cli/report.ts",
+    "smoke": "tsx src/cli/smoke.ts",
+    "check": "npm run typecheck && npm run lint && npm run test"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +23,15 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.15.0",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.74.0",
+    "zod": "^4.6.7"
+  },
+  "dependencies": {
+    "@composio/core": "^0.31.0",
+    "openai": "^7.64.0"
   }
 }

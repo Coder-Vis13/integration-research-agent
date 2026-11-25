@@ -1,0 +1,124 @@
+{
+  "catalog": "Live catalog loaded from cache.",
+  "exa": [],
+  "apps": [
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "unknown",
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The pipeline could not produce a record.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T12:08:21.354Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "No fetched page had enough text to quote."
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": 96,
+      "name": "Devin",
+      "record": {
+        "oneLiner": "Devin is the AI software engineer, built to help ambitious engineering teams crush their backlogs.",
+        "auth": [
+          "token"
+        ],
+        "access": "paid_plan",
+        "apiSurface": "rest",
+        "apiBreadth": "unknown",
+        "mcp": "official",
+        "composio": {
+          "slug": null,
+          "authSchemes": [],
+          "composioManagedAuthSchemes": [],
+          "noAuth": false,
+          "toolsCount": 0,
+          "triggersCount": 0,
+          "authDisagreement": false
+        },
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "paid",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The user needs to sign up for individual or team plans to access Devin. Therefore, buildability is unknown.",
+        "evidence": [
+          {
+            "url": "https://docs.devin.ai/",
+            "httpStatus": 200,
+            "retrievedAt": "2026-11-25T12:08:23.704Z",
+            "quote": "To access Devin, sign up at app.devin.ai . Individual and Teams plans are available."
+          }
+        ],
+        "confidence": "medium",
+        "checkedAt": "2026-11-25T12:08:21.354Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe"
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 36052,
+        "outputTokens": 310
+      }
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "record": {
+        "oneLiner": "unknown",
+        "auth": [
+          "unknown"
+        ],
+        "access": "unknown",
+        "apiSurface": "unknown",
+        "mcp": "unknown",
+        "webhooks": "unknown",
+        "sandbox": "unknown",
+        "pricingForApi": "unknown",
+        "rateLimit": "unknown",
+        "buildability": "unknown",
+        "blocker": "The pipeline could not produce a record.",
+        "evidence": [],
+        "confidence": "low",
+        "checkedAt": "2026-11-25T12:08:21.354Z",
+        "promptVersion": "smoke-v4",
+        "passId": "probe",
+        "unknownReason": "[\n  {\n    \"origin\": \"string\",\n    \"code\": \"too_small\",\n    \"minimum\": 1,\n    \"inclusive\": true,\n    \"path\": [\n      \"unknownReason\"\n    ],\n    \"message\": \"Too small: expected string to have >=1 characters\"\n  }\n]"
+      },
+      "retrieval": {
+        "mode": "http_only",
+        "sentence": "Composio search was not connected, so discovery used HTTP fetches of the hint URL and same-site doc links.",
+        "searchSlug": null
+      },
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      }
+    }
+  ]
+}
